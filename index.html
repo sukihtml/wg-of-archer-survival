@@ -30,6 +30,8 @@
 #lsm span{font-size:14px;font-weight:500;line-height:1.5;opacity:.7}
 @keyframes lsr{0%,25%{transform:rotate(0)}65%,100%{transform:rotate(-90deg)}}
 @media (orientation:portrait){#lsm{display:flex}}
+html.fsd #fs{display:none}
+@media (display-mode:fullscreen),(display-mode:standalone){#fs{display:none}}
 </style>
 </head>
 <body>
@@ -145,6 +147,11 @@ document.addEventListener('webkitfullscreenchange',lockL);
 document.addEventListener(n,lockL,true);
 });
 lockL();
+function fsDone(){
+if(document.fullscreenElement||document.webkitFullscreenElement)de.classList.add('fsd');
+}
+document.addEventListener('fullscreenchange',fsDone);
+document.addEventListener('webkitfullscreenchange',fsDone);
 })();
 </script>
 </body>
