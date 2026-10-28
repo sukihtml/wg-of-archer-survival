@@ -16,6 +16,14 @@
 <meta name="twitter:image" content="https://i.ibb.co.com/396j0dP4/20261028-201518.jpg">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="wg of archer/style.css">
+<style>
+#lo{position:fixed;inset:0;z-index:2147483647;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:#0c1220;color:#fff;font-family:system-ui,sans-serif;text-align:center;padding:24px;touch-action:none}
+#lo svg{width:84px;height:84px;fill:none;stroke:#f6d77a;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;animation:lor 2.4s ease-in-out infinite}
+#lo b{font-size:20px}
+#lo span{font-size:14px;opacity:.75}
+@keyframes lor{0%,25%{transform:rotate(0)}65%,100%{transform:rotate(-90deg)}}
+@media (orientation:portrait){#lo{display:flex}}
+</style>
 </head>
 <body>
 <canvas id="c"></canvas>
@@ -50,6 +58,22 @@
 </div>
 <div id="nm"><div class="nc"><b>Buat Nama Pemain</b><span>Nama ini akan tampil di leaderboard.</span><input id="ni" maxlength="14" autocomplete="off" spellcheck="false" placeholder="Ketik namamu"><i id="ne"></i><div id="nb">Mulai</div></div></div>
 <div id="of"><svg viewBox="0 0 64 64"><path d="M19 47h27a11 11 0 0 0 1.6-21.9A15 15 0 0 0 18.4 28 9.6 9.6 0 0 0 19 47z" fill="#dfe6f5" stroke="#8f9bc4" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 10l44 44" stroke="#0c1220" stroke-width="8" stroke-linecap="round"/><path d="M10 10l44 44" stroke="#e0405a" stroke-width="4" stroke-linecap="round"/></svg><b>Gagal terhubung ke server</b></div>
+<div id="lo"><svg viewBox="0 0 64 64"><rect x="20" y="6" width="24" height="44" rx="4"/><path d="M30 44h4"/><path d="M14 58h36M44 54l6 4-6 4"/></svg><b>Putar ke Mode Lanskap</b><span>Game ini hanya bisa dimainkan secara lanskap.</span></div>
+<script>
+(function(){
+function lk(){try{var o=screen.orientation;if(o&&o.lock){var p=o.lock("landscape");if(p&&p.catch)p.catch(function(){})}}catch(e){}}
+var rf=Element.prototype.requestFullscreen;
+if(rf){Element.prototype.requestFullscreen=function(op){
+var o=Object.assign({},op,{navigationUI:"hide"});
+var r=rf.call(this,o);
+if(r&&r.then)r.then(lk,function(){});else lk();
+return r}}
+document.addEventListener("fullscreenchange",function(){if(document.fullscreenElement)lk()});
+document.addEventListener("webkitfullscreenchange",lk);
+window.addEventListener("load",lk);
+document.addEventListener("pointerdown",lk,{once:true});
+})();
+</script>
 <script src="wg of archer/core.js"></script>
 <script src="wg of archer/input.js"></script>
 <script src="wg of archer/particles.js"></script>
