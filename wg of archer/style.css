@@ -154,6 +154,9 @@ body.ps #bm{display:flex}
 #mh .mc .mb[data-a="g"]{height:clamp(28px,8vh,34px);flex-direction:row;gap:5px}
 #mh .mc .mb[data-a="g"] svg{width:clamp(14px,4.5vh,18px);height:clamp(14px,4.5vh,18px)}
 #mh .mc .mb[data-a="g"] span{font-size:10px}
+#mh .mc .mb[data-a="r"]{height:clamp(28px,8vh,34px);flex-direction:row;gap:5px}
+#mh .mc .mb[data-a="r"] svg{width:clamp(14px,4.5vh,18px);height:clamp(14px,4.5vh,18px)}
+#mh .mc .mb[data-a="r"] span{font-size:10px}
 #pl.st{grid-template-columns:1fr;gap:8px}
 .sr{display:flex;flex-wrap:wrap;gap:6px}
 .so{flex:1 1 64px;height:36px;display:flex;align-items:center;justify-content:center;padding:0 6px;box-sizing:border-box;border-radius:10px;background:rgba(18,24,38,.7);border:1px solid rgba(220,228,244,.18);font-size:12px;font-weight:600;color:rgba(232,223,204,.85);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -225,3 +228,9 @@ body.of #of{display:flex}
 .yr{display:flex;gap:10px;justify-content:flex-end}
 .yr .bt{cursor:pointer}
 .mdc.m2{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 6px,transparent 6px 12px),linear-gradient(110deg,#2a1a4a,#c0392b)}
+#rdi{width:100%;height:40px;margin-top:6px;padding:0 12px;box-sizing:border-box;border-radius:12px;border:1px solid rgba(220,228,244,.25);background:rgba(18,24,38,.7);color:#f4e8d2;font:600 16px system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;outline:none;-webkit-user-select:text;user-select:text}
+#rdi::placeholder{text-transform:none;letter-spacing:0}
+#rdi:focus{border-color:rgba(228,198,146,.7)}
+#rdm{min-height:16px;margin-top:6px;font-size:12px;font-weight:600;line-height:1.4}
+#rdm.ok{color:#7fe0a0}
+#rdm.er{color:#ff9a8a}

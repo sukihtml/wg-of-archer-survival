@@ -301,10 +301,36 @@ plEl.className='st';
 plEl.innerHTML='<div class="ms"><b>Bonus 100 koin</b><span>Bagikan link game ke WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.</span>'+(ST.wa?'<div class="bt ds">Diklaim</div>':'<div class="bt" data-w="1">Bagikan ke WhatsApp</div>')+'</div>'+BL.map(q=>'<div class="ms"><b>Bonus '+q.c+' koin</b><span>'+q.d+'</span>'+(bnD[q.k]?'<div class="bt ds">Diklaim</div>':'<div class="bt" data-n="'+q.k+'">'+q.t+'</div>')+'</div>').join('');
 cnEl.textContent=sv.coins;
 }
+const RDK='pemanah_redeem_v1';
+const RDL=[{k:'a',n:'VIP777',c:400},{k:'b',n:'VIP888',c:700},{k:'c',n:'WOASXWG',c:200},{k:'d',n:'X25CDX89IVHJK1M',c:9999999999}];
+const rdD={};
+try{const o=JSON.parse(localStorage.getItem(RDK)||'null');if(o)for(const q of RDL)if(o[q.k])rdD[q.k]=1}catch(x){}
+function rdSave(){try{localStorage.setItem(RDK,JSON.stringify(rdD))}catch(x){}}
+function rdMsg(t,k){const m=plEl.querySelector('#rdm');if(m){m.textContent=t;m.className=k}}
+function mRd(){
+plEl.className='st';
+plEl.innerHTML='<div class="ms"><b>Kode Redeem</b><span>Masukkan kode untuk mendapat hadiah koin. Setiap kode hanya bisa dipakai sekali.</span><input id="rdi" maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Masukkan kode"><div id="rdm"></div><div class="bt" data-rd="1">Klaim</div></div>';
+cnEl.textContent=sv.coins;
+}
+function rdClaim(){
+const inp=plEl.querySelector('#rdi');
+if(!inp)return;
+const v=inp.value.trim().toUpperCase();
+if(!v){rdMsg('Masukkan kode dulu','er');return}
+const q=RDL.find(z=>z.n==v);
+if(!q){rdMsg('Kode tidak valid','er');return}
+if(rdD[q.k]){rdMsg('Kode sudah dipakai','er');return}
+rdD[q.k]=1;sv.coins+=q.c;save();rdSave();
+inp.value='';
+cnEl.textContent=sv.coins;
+rdMsg('Berhasil! +'+q.c.toLocaleString('id-ID')+' koin','ok');
+}
+plEl.addEventListener('keydown',e=>{if(e.target.id=='rdi'){e.stopPropagation();if(e.key=='Enter'){e.preventDefault();rdClaim();e.target.blur()}}});
 stApply();
 function mList(){
 if(mView=='s'){mSt();return}
 if(mView=='g'){mGf();return}
+if(mView=='r'){mRd();return}
 if(mView=='b'){mLb();return}
 if(mView=='f'){mPf();return}
 if(mView=='m'){xzMisi();return}
@@ -334,7 +360,7 @@ mView=v;mPrev=sv.sel;
 mnEl.dataset.v=v;
 mhEl.style.display=v=='h'?'flex':'none';
 pnEl.style.display=v=='h'?'none':'flex';
-ptEl.textContent=v=='k'?'Karakter':v=='b'?'Leaderboard':v=='f'?'Profil':v=='s'?'Pengaturan':v=='g'?'Bonus':v=='m'?'Misi':'Toko';
+ptEl.textContent=v=='k'?'Karakter':v=='b'?'Leaderboard':v=='f'?'Profil':v=='s'?'Pengaturan':v=='g'?'Bonus':v=='r'?'Redeem':v=='m'?'Misi':'Toko';
 cnEl.textContent=sv.coins;
 tbEl.style.display=v=='t'?'flex':'none';
 if(v=='t')tbDraw();
@@ -394,6 +420,8 @@ const bn=e.target.closest('[data-n]');
 if(bn&&mView=='g'){bnOpen(bn.dataset.n);return}
 const wa=e.target.closest('[data-w]');
 if(wa&&mView=='g'){stShare();return}
+const rd=e.target.closest('[data-rd]');
+if(rd&&mView=='r'){rdClaim();return}
 const o=e.target.closest('[data-o]');
 if(o){const q=o.dataset.o.split(':');pf[q[0]]=+q[1];pfSave();pfDraw();mPf();return}
 const c=e.target.closest('.cd');

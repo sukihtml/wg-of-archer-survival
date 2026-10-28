@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#0c1220">
+<title>wg of archer survival</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="WG of Archer Survival">
+<meta property="og:description" content="Developer: Wangsaf Gaming Yt">
+<meta property="og:image" content="https://i.ibb.co.com/RGpXbSXr/20261028-190444.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://i.ibb.co.com/RGpXbSXr/20261028-190444.jpg">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="wg of archer/style.css">
+<style>
+#apkm{position:fixed;left:0;top:0;right:0;bottom:0;z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.6);box-sizing:border-box}
+#apkm .apkc{width:100%;max-width:380px;box-sizing:border-box;padding:24px 20px 20px;border-radius:28px;background:#e2e2e2;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+#apkm .apkt{display:block;margin:0 0 20px;font-size:18px;font-weight:800;line-height:1.35;color:#2b2d31}
+#apkm .apkb{display:block;box-sizing:border-box;width:100%;margin:0 0 12px;padding:17px 12px;border-radius:14px;background:linear-gradient(135deg,#7a7e84,#575a60);color:#fff;font-size:15px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;text-align:center;text-decoration:none;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.28);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+#apkm .apkb:active{transform:scale(.97)}
+#apkm .apkl{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 0;font-size:14px;font-weight:600;color:#4a4d52;cursor:pointer;user-select:none;-webkit-user-select:none}
+#apkm .apkl input{position:static;display:inline-block;width:20px;height:20px;margin:0;padding:0;flex:none;accent-color:#5a5d63;opacity:1}
+#lsm{position:fixed;left:0;top:0;right:0;bottom:0;z-index:100000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;box-sizing:border-box;background:#0c1220;color:#fff;text-align:center;font-family:system-ui,-apple-system,sans-serif;touch-action:none}
+#lsm svg{width:84px;height:84px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;animation:lsr 2.2s ease-in-out infinite}
+#lsm b{font-size:19px;font-weight:800;line-height:1.35}
+#lsm span{font-size:14px;font-weight:500;line-height:1.5;opacity:.7}
+@keyframes lsr{0%,25%{transform:rotate(0)}65%,100%{transform:rotate(-90deg)}}
+@media (orientation:portrait){#lsm{display:flex}}
+html.fsd #fs{display:none}
+@media (display-mode:fullscreen),(display-mode:standalone){#fs{display:none}}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="pad">
+<div class="b" id="l" data-k="l"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div>
+<div class="b" id="r" data-k="r"><svg viewBox="0 0 24 24"><path d="M9.5 5.5 16 12l-6.5 6.5"/></svg></div>
+<div class="b" id="j" data-k="j"><svg viewBox="0 0 24 24"><path d="M12 19V6M6.5 11.5 12 6l5.5 5.5"/></svg></div>
+<div class="b" id="q" data-k="q"><svg viewBox="0 0 24 24"><path d="M4 12h14M4 12l13-6M4 12l13 6M15.5 9.5 18.5 12l-3 2.5"/></svg></div>
+<div class="b" id="u" data-k="u"><svg viewBox="0 0 24 24"><path d="M6 3v11M6 14l-2.2-2.2M6 14l2.2-2.2M12 6v15M12 21l-2.2-2.2M12 21l2.2-2.2M18 3v11M18 14l-2.2-2.2M18 14l2.2-2.2"/></svg></div>
+<div class="b" id="v" data-k="v"><svg viewBox="0 0 24 24"><path d="M13.5 3 6.5 13.5h5L10.5 21l7-10.5h-5z"/></svg></div>
+<div class="b" id="x" data-k="x"><svg viewBox="0 0 24 24"><path d="M5 19 19 5M14 5h5v5M19 19 5 5M10 5H5v5M12 9.3l2.7 2.7-2.7 2.7-2.7-2.7z"/></svg></div>
+<div class="b" id="m" data-k="m"><svg viewBox="0 0 24 24"><path d="M2.5 8.5c6 2.2 13 2.2 19 0M5 12h14M7 12v8.5M17 12v8.5M12 3.5v5M9.5 20.5h5"/></svg></div>
+<div class="b" id="s" data-k="s"><svg viewBox="0 0 24 24"><path d="M12 3.5 18.5 6v5.2c0 4.3-2.7 7.4-6.5 9.3-3.8-1.9-6.5-5-6.5-9.3V6z"/></svg></div>
+<div class="b" id="f" data-k="f"><svg viewBox="0 0 24 24"><path d="M7.5 3.5c6.5 2.5 6.5 14.5 0 17"/><path d="M7.5 3.5v17"/><path d="M3.5 12h15M14.5 8.5 18.5 12l-4 3.5"/></svg></div>
+</div>
+<div id="fs"><svg class="i1" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><svg class="i2" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></svg></div>
+<div class="mb" id="bm"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg><span>Kembali ke Menu</span></div>
+<div id="pz"><svg class="i1" viewBox="0 0 24 24"><path d="M9 5v14M15 5v14"/></svg><svg class="i2" viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></svg></div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.2" fill="#e9bd4f" stroke="#8a5f12" stroke-width="1.5"/><circle cx="12" cy="12" r="7" fill="#f6d77a" stroke="#b8860f" stroke-width="1.1"/><path d="M12 7.4l1.5 3.1 3.4.5-2.5 2.4.6 3.4L12 15.1l-3 1.7.6-3.4-2.5-2.4 3.4-.5z" fill="#b8860f"/><path d="M6.2 9.4A6.6 6.6 0 0 1 10.4 5.6" fill="none" stroke="#fff6cf" stroke-width="1.2" stroke-linecap="round"/></symbol><symbol id="av0" viewBox="0 0 48 48"><rect width="48" height="48" fill="#2f6b4f"/><circle cx="24" cy="24" r="19" fill="#3c8460"/><path d="M17 8C30 13 30 35 17 40" fill="none" stroke="#f1d79c" stroke-width="3.2" stroke-linecap="round"/><path d="M17 8V40" stroke="#e9e5d2" stroke-width="1.2"/><path d="M12 24H39M33 18l6 6-6 6M12 24l-4-4M12 24l-4 4" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol><symbol id="av1" viewBox="0 0 48 48"><rect width="48" height="48" fill="#2b4a8c"/><path d="M24 7 38 12v11c0 9-6 15-14 19z" fill="#e3b53c" stroke="#101a38" stroke-width="2" stroke-linejoin="round"/><path d="M24 7 10 12v11c0 9 6 15 14 19z" fill="#cfd8f0" stroke="#101a38" stroke-width="2" stroke-linejoin="round"/><circle cx="24" cy="23" r="3.4" fill="#c0392b" stroke="#101a38" stroke-width="1.4"/></symbol><symbol id="av2" viewBox="0 0 48 48"><rect width="48" height="48" fill="#4a2a5e"/><path d="M9 9l9 7h12l9-7v16c0 8-6 14-15 17C15 39 9 33 9 25z" fill="#d3d6e3" stroke="#17141f" stroke-width="2" stroke-linejoin="round"/><path d="M13 16l5 4v6l-5-3zM35 16l-5 4v6l5-3z" fill="#8f94ad"/><path d="M16 27l6 2-5 2zM32 27l-6 2 5 2z" fill="#ffcf4a" stroke="#17141f" stroke-width=".8"/><path d="M20 34h8l-4 4z" fill="#17141f"/></symbol></svg>
+<div id="mn">
+<div id="cb"><svg class="ci" viewBox="0 0 24 24"><use href="#coin"/></svg><span id="cn">0</span></div>
+<div id="pf" data-a="f"><div class="av"></div><span></span></div>
+<div id="mh">
+<div class="mb" data-a="t"><svg viewBox="0 0 24 24"><path d="M4 9.5 5.5 4h13L20 9.5M4 9.5c0 1.4 1.1 2.5 2.5 2.5S9 10.9 9 9.5M9 9.5c0 1.4 1.3 2.5 3 2.5s3-1.1 3-2.5M15 9.5c0 1.4 1.1 2.5 2.5 2.5S20 10.9 20 9.5M5.5 12v8h13v-8M10 20v-4.5h4V20"/></svg><span>Toko</span></div>
+<div class="mb" data-a="k"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.6"/><path d="M5 20c0-4.2 3-6.6 7-6.6s7 2.4 7 6.6"/></svg><span>Karakter</span></div>
+<div class="mb pl" data-a="p"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l10-6.5z"/></svg><span>Main</span></div>
+<div class="mb" data-a="m"><svg viewBox="0 0 24 24"><path d="M6 3.5h12v17H6zM9 8.5l1.2 1.2L12.5 7.5M9 14h6M9 17h4"/></svg><span>Misi</span></div>
+<div class="mb lk"><svg viewBox="0 0 24 24"><rect x="5.5" y="10.5" width="13" height="9.5" rx="2"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5M12 14.2v2.6"/></svg><span>Klan</span></div>
+<div class="mc"><div class="mb" data-a="r"><svg viewBox="0 0 24 24"><path d="M4 7h16v3a2 2 0 0 0 0 4v3H4v-3a2 2 0 0 0 0-4zM14 7v10"/></svg><span>Redeem</span></div><div class="mb" data-a="g"><svg viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7.5h18V11H3zM12 7.5V20M12 7.5C10 7.5 7.5 6.8 7.5 5.2S10 3.5 12 7.5zM12 7.5c2 0 4.5-.7 4.5-2.3S14 3.5 12 7.5z"/></svg><span>Bonus</span></div><div class="mb" data-a="s"><svg viewBox="0 0 24 24"><path d="M9.9 5.1L10.3 2.3L13.7 2.3L14.1 5.1L15.4 5.6L17.6 4.0L20.0 6.4L18.4 8.6L18.9 9.9L21.7 10.3L21.7 13.7L18.9 14.1L18.4 15.4L20.0 17.6L17.6 20.0L15.4 18.4L14.1 18.9L13.7 21.7L10.3 21.7L9.9 18.9L8.6 18.4L6.4 20.0L4.0 17.6L5.6 15.4L5.1 14.1L2.3 13.7L2.3 10.3L5.1 9.9L5.6 8.6L4.0 6.4L6.4 4.0L8.6 5.6z"/><circle cx="12" cy="12" r="3"/></svg><span>Pengaturan</span></div><div class="mb" data-a="b"><svg viewBox="0 0 24 24"><path d="M4 8.5l3.6 3.4L12 5l4.4 6.9L20 8.5l-1.5 9h-13zM6 20.5h12"/></svg><span>Leaderboard</span></div></div>
+</div>
+<div id="pn"><div id="ph"><div class="mb sm" data-a="h"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div><b id="pt"></b></div><div id="tb"></div><div id="pl"></div></div>
+</div>
+<div id="md"><div class="mdw"><div class="mdh"><div class="mb sm" id="mdx"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div><b>Pilih Mode</b></div><div class="mdr"><div class="mdc m0" data-d="0"><svg viewBox="0 0 24 24"><path d="M7.5 3.5c6.5 2.5 6.5 14.5 0 17M7.5 3.5v17M3.5 12h15M14.5 8.5 18.5 12l-4 3.5"/></svg><div class="mdt"><b>Mode Biasa</b><span>Gelombang tanpa akhir, boss muncul setiap 5 gelombang.</span></div></div><div class="mdc m1" data-d="1"><svg viewBox="0 0 24 24"><path d="M5 4c0 4 1 6 3 7M19 4c0 4-1 6-3 7M6 11c0-2 2.5-3.5 6-3.5s6 1.5 6 3.5v4c0 3-2.7 5-6 5s-6-2-6-5zM9.5 13.5h.01M14.5 13.5h.01M9.5 17.5h5"/></svg><div class="mdt"><b>Mode Monster</b><span>Puluhan musuh super tebal dari dua arah, makin kuat tiap menit. 3 boss muncul di detik ke-20. 50 koin setiap menit bertahan.</span><em id="mdl"></em></div></div><div class="mdc m2" data-d="2"><svg viewBox="0 0 24 24"><path d="M4 8.5l3.6 3.4L12 5l4.4 6.9L20 8.5l-1.5 9h-13zM6 20.5h12"/></svg><div class="mdt"><b>Boss Rush</b><span>Bos datang satu per satu tanpa henti dan makin kuat. 20 koin setiap bos tumbang.</span><em id="mdb"></em></div></div></div></div></div>
+<div id="yk"><div class="nc"><b>Yakin?</b><span>Mode Monster hanya bisa dimainkan 1x sehari. Jatah hari ini hangus begitu kamu mulai.</span><div class="yr"><div class="bt ds" id="yn">Batal</div><div class="bt" id="yy">Yakin, Main</div></div></div></div>
+<div id="nm"><div class="nc"><b>Buat Nama Pemain</b><span>Nama ini akan tampil di leaderboard.</span><input id="ni" maxlength="14" autocomplete="off" spellcheck="false" placeholder="Ketik namamu"><i id="ne"></i><div id="nb">Mulai</div></div></div>
+<div id="of"><svg viewBox="0 0 64 64"><path d="M19 47h27a11 11 0 0 0 1.6-21.9A15 15 0 0 0 18.4 28 9.6 9.6 0 0 0 19 47z" fill="#dfe6f5" stroke="#8f9bc4" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 10l44 44" stroke="#0c1220" stroke-width="8" stroke-linecap="round"/><path d="M10 10l44 44" stroke="#e0405a" stroke-width="4" stroke-linecap="round"/></svg><b>Gagal terhubung ke server</b></div>
+<div id="apkm"><div class="apkc"><b class="apkt">Tetap main di browser atau download APK?</b><div class="apkb" id="apkb1">Tetap di browser</div><a class="apkb" id="apkb2" href="https://www.mediafire.com/file/oncv6b55oniqapy/A.+WOAS_1.apk/file" target="_blank" rel="noopener">Download</a><label class="apkl"><input type="checkbox" id="apkcb"><span>Jangan tampilkan lagi hari ini</span></label></div></div>
+<div id="lsm"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><b>Putar HP ke mode lanskap</b><span>Game ini hanya bisa dimainkan secara lanskap.</span></div>
+<script src="wg of archer/core.js"></script>
+<script src="wg of archer/input.js"></script>
+<script src="wg of archer/particles.js"></script>
+<script src="wg of archer/player.js"></script>
+<script src="wg of archer/projectiles.js"></script>
+<script src="wg of archer/character.js"></script>
+<script src="wg of archer/spear.js"></script>
+<script src="wg of archer/game-state.js"></script>
+<script src="wg of archer/fitur.js"></script>
+<script src="wg of archer/enemies.js"></script>
+<script src="wg of archer/squad.js"></script>
+<script src="wg of archer/squad-render.js"></script>
+<script src="wg of archer/enemies-render.js"></script>
+<script src="wg of archer/hud.js"></script>
+<script src="wg of archer/combo.js"></script>
+<script src="wg of archer/world.js"></script>
+<script src="wg of archer/menu.js"></script>
+<script src="wg of archer/audio.js"></script>
+<script src="wg of archer/main.js"></script>
+<script>
+(function(){
+if('serviceWorker' in navigator){
+window.addEventListener('load',function(){
+navigator.serviceWorker.register('sw.js').catch(function(){});
+});
+}
+var de=document.documentElement;
+function fs(e){
+if(document.fullscreenElement||document.webkitFullscreenElement)return;
+if(e&&e.target&&e.target.closest&&e.target.closest('#fs'))return;
+var r=de.requestFullscreen||de.webkitRequestFullscreen;
+if(!r)return;
+try{
+var p=r.call(de);
+if(p&&p.catch)p.catch(function(){});
+}catch(x){}
+}
+['click','touchend','pointerup','keydown'].forEach(function(n){
+document.addEventListener(n,fs,true);
+});
+var m=document.getElementById('apkm');
+var k='apkm_hide';
+function today(){
+var d=new Date();
+return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+}
+function hidden(){
+try{return localStorage.getItem(k)===today();}catch(x){return false;}
+}
+function close(){
+if(document.getElementById('apkcb').checked){
+try{localStorage.setItem(k,today());}catch(x){}
+}
+m.style.display='none';
+}
+if(!hidden())m.style.display='flex';
+document.getElementById('apkb1').addEventListener('click',close);
+document.getElementById('apkb2').addEventListener('click',close);
+['touchstart','pointerdown','mousedown'].forEach(function(n){
+m.addEventListener(n,function(e){e.stopPropagation();});
+});
+function lockL(){
+try{
+var o=screen.orientation;
+if(o&&o.lock){
+var p=o.lock('landscape');
+if(p&&p.catch)p.catch(function(){});
+}
+}catch(x){}
+}
+document.addEventListener('fullscreenchange',lockL);
+document.addEventListener('webkitfullscreenchange',lockL);
+['click','touchend','pointerup'].forEach(function(n){
+document.addEventListener(n,lockL,true);
+});
+lockL();
+function fsDone(){
+if(document.fullscreenElement||document.webkitFullscreenElement)de.classList.add('fsd');
+}
+document.addEventListener('fullscreenchange',fsDone);
+document.addEventListener('webkitfullscreenchange',fsDone);
+})();
+</script>
+</body>
+</html>
