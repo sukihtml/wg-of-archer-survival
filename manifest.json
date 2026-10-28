@@ -1,0 +1,25 @@
+{
+  "name": "WG of Archer Survival",
+  "short_name": "WG Archer",
+  "description": "Developer: Wangsaf Gaming Yt",
+  "lang": "id",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "fullscreen",
+  "background_color": "#0c1220",
+  "theme_color": "#0c1220",
+  "icons": [
+    {
+      "src": "Profil/192.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "Profil/512.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
