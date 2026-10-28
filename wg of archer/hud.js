@@ -30,15 +30,15 @@ g.fillStyle='rgba(8,10,16,.55)';g.fillRect(x-1,y-1,w+2,9);
 g.fillStyle='#d9b878';g.fillRect(x,y,w*r,7);
 g.fillStyle='rgba(255,255,255,.14)';g.fillRect(x,y,w*r,2);
 g.textAlign='left';g.font='600 12px system-ui,sans-serif';g.fillStyle='rgba(228,234,248,.92)';
-g.fillText('Gelombang '+WV.n,x,y+26);
+g.fillText(brOn?'Boss Rush '+brK:mmOn?'Monster '+mmT():'Gelombang '+WV.n,x,y+26);
 {const ae=AE[evl()];g.fillStyle='rgb('+ae.c+')';g.fillText(ae.n,x+96,y+26,w-70)}
 if(coinImg.complete&&coinImg.naturalWidth)g.drawImage(coinImg,x,y+32,14,14);
 g.fillStyle='rgba(228,234,248,.92)';g.fillText(sv.coins,x+19,y+43);
-g.textAlign='right';g.fillStyle=WV.n>rb?'#ffd45a':'rgba(228,234,248,.7)';g.fillText('Rekor '+sv.hi,x+w,y+43);g.textAlign='left';
+g.textAlign='right';g.fillStyle=WV.n>rb&&!mmOn?'#ffd45a':'rgba(228,234,248,.7)';g.fillText(brOn?'Rekor '+brBest:mmOn?'+50 dalam '+M.ceil(60-mmTi%60)+'s':'Rekor '+sv.hi,x+w,y+43);g.textAlign='left';
 g.font='11px system-ui,sans-serif';
 for(let i=0;i<SC.length;i++){
 const c=SC[i],yy=y+66+i*20,s=S.find(q=>q.c===c);
-if(!s){g.fillStyle='rgba(215,224,242,.32)';g.fillText(c.n+'  (belum dibeli)',x,yy);continue}
+if(!s){g.fillStyle='rgba(215,224,242,.32)';g.fillText(sv.sq.includes(i)?c.n:c.n+'  (belum dibeli)',x,yy);continue}
 g.fillStyle=s.dead?'rgba(215,224,242,.4)':'rgba(215,224,242,.88)';
 g.fillText(s.dead?c.n+'  '+M.ceil(s.dead)+' dtk':c.n,x,yy);
 g.fillStyle='rgba(8,10,16,.55)';g.fillRect(x,yy+4,92,4);
@@ -105,10 +105,10 @@ g.fillStyle='rgba(8,6,10,'+.4*k+')';g.fillRect(0,0,VW,VH);
 g.textAlign='center';g.fillStyle='rgba(235,225,210,'+k+')';g.font='600 22px system-ui,sans-serif';
 g.fillText('Gugur',VW/2,VH*.4);
 g.font='13px system-ui,sans-serif';g.fillStyle='rgba(235,225,210,'+.6*k+')';
-g.fillText('Gelombang '+WV.n,VW/2,VH*.4+26);
-g.font=WV.n>rb?'600 15px system-ui,sans-serif':'13px system-ui,sans-serif';
-g.fillStyle=WV.n>rb?'rgba(255,212,90,'+k+')':'rgba(235,225,210,'+.6*k+')';
-g.fillText(WV.n>rb?'REKOR BARU!':'Rekor '+sv.hi,VW/2,VH*.4+48);
+g.fillText(brOn?'Bos dikalahkan '+brK:mmOn?'Bertahan '+mmT():'Gelombang '+WV.n,VW/2,VH*.4+26);
+g.font=WV.n>rb&&!mmOn?'600 15px system-ui,sans-serif':'13px system-ui,sans-serif';
+g.fillStyle=WV.n>rb&&!mmOn?'rgba(255,212,90,'+k+')':'rgba(235,225,210,'+.6*k+')';
+g.fillText(brOn?'Koin didapat '+brK*20:mmOn?'Koin didapat '+mmCn*50:WV.n>rb?'REKOR BARU!':'Rekor '+sv.hi,VW/2,VH*.4+48);
 }
 }
 

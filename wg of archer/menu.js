@@ -239,7 +239,7 @@ sv.coins-=SQP[i];sv.sq.push(i);save();mList();
 }
 const FLT=['none','brightness(1.12) contrast(1.08) saturate(1.25)','sepia(.35) saturate(1.3) hue-rotate(-8deg)','contrast(1.25) saturate(1.15)','grayscale(1)','none'];
 const SO=[['gq','Grafik',['Rendah','Sedang','Tinggi']],['fp','FPS',['30','60','Maks']],['fl','Filter',['Normal','Cerah','Hangat','Kontras','Hitam Putih','Shadow']],['ly','Tata letak tombol',['Standar','Tukar sisi']]];
-const WAL='https://www.mediafire.com/file/iwnvpu1h1z3gc7j/A.+Suki_1.apk/file';
+const WAL='https://www.mediafire.com/file/oncv6b55oniqapy/A.+WOAS_1.apk/file';
 let waP=0;
 function stApply(){
 cv.style.filter=FLT[ST.fl];
@@ -259,25 +259,52 @@ window.open('https://api.whatsapp.com/send?text='+encodeURIComponent('Ayo main W
 function stWa(){
 if(waP!=2||ST.wa)return;
 waP=0;ST.wa=1;sv.coins+=100;save();stSave();
-if(mView=='s')mSt();
+if(mView=='g')mGf();
 }
 document.addEventListener('visibilitychange',()=>{if(document.hidden){if(waP==1)waP=2}else stWa()});
 addEventListener('blur',()=>{if(waP==1)waP=2});
 addEventListener('focus',stWa);
 addEventListener('pageshow',stWa);
+const BK='pemanah_bonus_v1';
+const BL=[{k:'c',c:50,t:'Follow Saluran',u:'https://whatsapp.com/channel/0029Vb6t3YqIXnluSByJvh1g',d:'Follow saluran WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'y',c:70,t:'Buka YouTube',u:'https://youtu.be/xq3DUQa4JTs?si=rEoFRHZmSkbQRKQI',d:'Like dan subscribe di YouTube, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'u',c:30,t:'Follow Woas Update',u:'https://whatsapp.com/channel/0029VbE0SuKGZNCyxMgAf702',d:'Follow saluran WhatsApp Woas Update, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'}];
+const bnD={};
+try{const o=JSON.parse(localStorage.getItem(BK)||'null');if(o)for(const q of BL)if(o[q.k])bnD[q.k]=1}catch(x){}
+let bnK='',bnP=0;
+function bnSave(){try{localStorage.setItem(BK,JSON.stringify(bnD))}catch(x){}}
+function bnOpen(k){
+if(bnD[k])return;
+bnK=k;bnP=1;
+window.open(BL.find(q=>q.k==k).u,'_blank');
+}
+function bnClaim(){
+if(bnP!=2||!bnK||bnD[bnK])return;
+const q=BL.find(z=>z.k==bnK);
+bnP=0;bnK='';
+bnD[q.k]=1;sv.coins+=q.c;save();bnSave();
+if(mView=='g')mGf();
+}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(bnP==1)bnP=2}else bnClaim()});
+addEventListener('blur',()=>{if(bnP==1)bnP=2});
+addEventListener('focus',bnClaim);
+addEventListener('pageshow',bnClaim);
 function mSt(){
 const st=plEl.scrollTop;
 plEl.className='st';
 let h='';
 for(const q of SO)h+='<div class="pq">'+q[1]+'</div><div class="sr">'+q[2].map((n,i)=>'<div class="so'+(ST[q[0]]==i?' on':'')+'" data-g="'+q[0]+':'+i+'">'+n+'</div>').join('')+'</div>';
-h+='<div class="ms"><b>Bonus 100 koin</b><span>Bagikan link game ke WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.</span>'+(ST.wa?'<div class="bt ds">Diklaim</div>':'<div class="bt" data-w="1">Bagikan ke WhatsApp</div>')+'</div>';
 plEl.innerHTML=h;
 plEl.scrollTop=st;
+cnEl.textContent=sv.coins;
+}
+function mGf(){
+plEl.className='st';
+plEl.innerHTML='<div class="ms"><b>Bonus 100 koin</b><span>Bagikan link game ke WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.</span>'+(ST.wa?'<div class="bt ds">Diklaim</div>':'<div class="bt" data-w="1">Bagikan ke WhatsApp</div>')+'</div>'+BL.map(q=>'<div class="ms"><b>Bonus '+q.c+' koin</b><span>'+q.d+'</span>'+(bnD[q.k]?'<div class="bt ds">Diklaim</div>':'<div class="bt" data-n="'+q.k+'">'+q.t+'</div>')+'</div>').join('');
 cnEl.textContent=sv.coins;
 }
 stApply();
 function mList(){
 if(mView=='s'){mSt();return}
+if(mView=='g'){mGf();return}
 if(mView=='b'){mLb();return}
 if(mView=='f'){mPf();return}
 if(mView=='m'){xzMisi();return}
@@ -307,7 +334,7 @@ mView=v;mPrev=sv.sel;
 mnEl.dataset.v=v;
 mhEl.style.display=v=='h'?'flex':'none';
 pnEl.style.display=v=='h'?'none':'flex';
-ptEl.textContent=v=='k'?'Karakter':v=='b'?'Leaderboard':v=='f'?'Profil':v=='s'?'Pengaturan':v=='m'?'Misi':'Toko';
+ptEl.textContent=v=='k'?'Karakter':v=='b'?'Leaderboard':v=='f'?'Profil':v=='s'?'Pengaturan':v=='g'?'Bonus':v=='m'?'Misi':'Toko';
 cnEl.textContent=sv.coins;
 tbEl.style.display=v=='t'?'flex':'none';
 if(v=='t')tbDraw();
@@ -337,7 +364,7 @@ const t=e.target.closest('#mh .mb');
 if(t)mFx(t,e);
 const a=e.target.closest('[data-a]');
 if(a){
-const go=()=>{if(a.dataset.a=='p')runStart();else mShow(a.dataset.a)};
+const go=()=>{if(a.dataset.a=='p')mdOpen();else mShow(a.dataset.a)};
 if(t){mBusy=1;setTimeout(()=>{mBusy=0;go()},a.dataset.a=='p'?280:170)}else go();
 return;
 }
@@ -363,8 +390,10 @@ return;
 }
 const ga=e.target.closest('[data-g]');
 if(ga&&mView=='s'){const z=ga.dataset.g.split(':');stSet(z[0],+z[1]);return}
+const bn=e.target.closest('[data-n]');
+if(bn&&mView=='g'){bnOpen(bn.dataset.n);return}
 const wa=e.target.closest('[data-w]');
-if(wa&&mView=='s'){stShare();return}
+if(wa&&mView=='g'){stShare();return}
 const o=e.target.closest('[data-o]');
 if(o){const q=o.dataset.o.split(':');pf[q[0]]=+q[1];pfSave();pfDraw();mPf();return}
 const c=e.target.closest('.cd');
@@ -373,6 +402,30 @@ const i=+c.dataset.i;
 if(mView=='k'){if(i==6){spSet(1);mList()}else if(sv.own.includes(i)){sv.sel=i;mPrev=i;spSet(0);save();mList()}}
 else if(e.target.closest('.bt'))buyCh(i);
 else{mPrev=i;mList()}
+});
+const MMK='pemanah_monster_v1';
+const mdEl=document.getElementById('md'),mdLb=document.getElementById('mdl'),ykEl=document.getElementById('yk'),mdBr=document.getElementById('mdb');
+const mdDay=()=>{const d=new Date();return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()};
+const mdOk=()=>{try{return localStorage.getItem(MMK)!=mdDay()}catch(x){return 1}};
+function mdOpen(){
+const ok=mdOk();
+mdEl.querySelector('.m1').classList.toggle('lk',!ok);
+mdLb.textContent=ok?'Tersedia hari ini  -  1x sehari':'Sudah dimainkan hari ini. Tersedia lagi besok.';
+mdBr.textContent=brBest?'Rekor '+brBest+' bos':'';
+mdEl.classList.add('on');
+}
+function mdClose(){mdEl.classList.remove('on')}
+mdEl.addEventListener('click',e=>{
+if(e.target===mdEl||e.target.closest('#mdx')){mdClose();return}
+const c=e.target.closest('[data-d]');
+if(!c)return;
+const m=+c.dataset.d;
+if(m==1){if(!mdOk())return;ykEl.classList.add('on');return}
+mdClose();runStart(m);
+});
+ykEl.addEventListener('click',e=>{
+if(e.target.closest('#yy')){try{localStorage.setItem(MMK,mdDay())}catch(x){}ykEl.classList.remove('on');mdClose();runStart(1);return}
+if(e.target===ykEl||e.target.closest('#yn'))ykEl.classList.remove('on');
 });
 function resetRun(){
 xzReset();cmbReset();E.length=0;S.length=0;Pr.length=0;A.length=0;P.length=0;DS.length=0;
@@ -384,12 +437,12 @@ shake=0;msg=null;GQ.l=0;FXA.fl=0;FXA.sa=0;
 cam=p.x-VW*.5+50;
 }
 function menuGo(){
-inMenu=1;WV.n=0;
+inMenu=1;WV.n=0;mmOn=0;brOn=0;
 resetRun();
 document.body.classList.add('mn');
 mShow('h');
 }
-function runStart(){
+function runStart(m){
 inMenu=0;
 document.body.classList.remove('mn');
 resetRun();
@@ -400,7 +453,7 @@ p.mh=M.round(p.mh*gUh());p.hp=p.mh;
 WV.k=0;WV.ts=T;
 rb=sv.hi;
 wake();
-waveGo(sv.cw);
+if(m==2)brGo();else if(m)mmGo();else waveGo(sv.cw);
 }
 function upMn(dt){
 p.vt=mPrev;

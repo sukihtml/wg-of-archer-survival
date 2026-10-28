@@ -8,12 +8,52 @@ const k5=n%5,gm=k5==3,rb=k5==4,hp=(1000+n*600)*(gm?1.25:rb?.9:1)*pdm(),x=M.rando
 E.push({t:gm?6:rb?7:3,boss:1,sz:gm?2.4:rb?2.2:2.3,x,y:GY,vx:0,f:x<p.x?1:-1,hp,mh:hp,sp:50+M.min(24,n*2.5),dm:(30+n*4)*gDm(),rg:90,cd:0,wu:0,mw:1,sw:0,ph:0,hf:0,dd:0,id:3,st:0,tm:1.6,n:0,cf:1,hl:[],nm:BN[k5],fx:0,stp:0});
 ban(BN[k5]);
 }
+function mmGo(){
+mmOn=1;mmTi=0;mmBs=0;mmCn=0;WV.n=M.max(3,M.min(8,sv.hi));WV.q=0;WV.bs=0;WV.bt=0;spT=0;
+ban('Mode Monster');
+}
+function mmSp(dt){
+mmTi+=dt;
+const mn=M.floor(mmTi/60),nb=!mmBs&&mmTi>=20;
+if(nb){
+mmBs=1;
+for(let k=0;k<3;k++){mkBoss(k);const b=E[E.length-1];b.x=k%2?cam-140-k*70:cam+VW+140+k*70;b.f=b.x<p.x?1:-1}
+}
+if(mn>mmCn){mmCn=mn;sv.coins+=50;save();ban('+50 koin  -  Menit '+mn+' selesai  -  Musuh makin kuat')}
+spT-=dt;
+if(spT>0)return;
+spT=.5;
+const cap=M.min(60,30+mn*4),hm=6*(1+mmTi/60*.6),dmk=3*(1+mmTi/120);
+for(let n=0;n<3&&E.length<cap;n++){
+const r=M.random(),t=r<.4?0:r<.7?1:r<.82?2:r<.92?4:5,s=M.random()<.5?-1:1;
+mkE(t,s<0?cam-70-rnd(0,380):cam+VW+70+rnd(0,380));
+const ne=E[E.length-1];ne.hp*=hm;ne.mh=ne.hp;ne.dm*=dmk;
+}
+}
+function brGo(){
+mmOn=1;brOn=1;brK=0;brN=0;brT=2;WV.n=1;WV.q=0;WV.bs=0;WV.bt=0;spT=0;
+ban('Boss Rush');
+}
+function brSp(dt){
+if(E.some(e=>e.boss&&!e.dd))return;
+brT-=dt;
+if(brT>0)return;
+const c=1+M.min(2,M.floor(brN/6));
+for(let k=0;k<c;k++){
+mkBoss(brN+k);
+const b=E[E.length-1];
+b.hp*=1+brN*.18;b.mh=b.hp;b.dm*=1+brN*.08;
+if(k){b.x=k%2?cam-140-k*70:cam+VW+140+k*70;b.f=b.x<p.x?1:-1}
+}
+brN+=c;brT=2;
+}
 function waveGo(n){
 WV.n=n;sv.cw=n;if(n>sv.hi)sv.hi=n;save();WV.q=3+n*2;WV.bs=n%5==0?1:0;WV.bt=0;spT=2;
 ban('Gelombang '+n);
 }
 function spw(dt){
 if(p.dead||!WV.n)return;
+if(mmOn){if(brOn)brSp(dt);else mmSp(dt);return}
 if(WV.bt>0){WV.bt-=dt;if(WV.bt<=0)waveGo(WV.n+1);return}
 if(WV.q<=0&&!WV.bs){
 if(!E.some(e=>!e.dd)){WV.bt=3;if(WV.n%5)ban('Gelombang '+WV.n+' selesai')}

@@ -6,6 +6,10 @@ const SK='pemanah_save_v1';
 const sv={coins:10,own:[0],sel:0,hi:1,up:[0,0,0,0],wg:[],ws:0,sq:[],sl:[0,0,0,0],wl:0};
 try{const o=JSON.parse(localStorage.getItem(SK)||'null');if(o){sv.coins=M.max(0,o.coins|0);if(Array.isArray(o.own))for(const v of o.own)if((v|0)>0&&(v|0)<AE.length&&!sv.own.includes(v|0))sv.own.push(v|0);if(sv.own.includes(o.sel|0))sv.sel=o.sel|0;sv.hi=M.max(1,o.hi|0);if(Array.isArray(o.up))for(let i=0;i<4;i++)sv.up[i]=M.max(0,M.min(10,o.up[i]|0));if(Array.isArray(o.wg))for(const v of o.wg)if((v==1||v==2)&&!sv.wg.includes(v))sv.wg.push(v);if(sv.wg.includes(o.ws|0))sv.ws=o.ws|0;if(Array.isArray(o.sq))for(const v of o.sq)if((v|0)>=0&&(v|0)<4&&!sv.sq.includes(v|0))sv.sq.push(v|0);if(Array.isArray(o.sl))for(let i=0;i<4;i++)sv.sl[i]=M.max(0,M.min(5,o.sl[i]|0));sv.wl=M.max(0,M.min(5,o.wl|0))}}catch(x){}
 const WV={n:0,k:0,q:0,bs:0,bt:0,ts:0};
+let mmOn=0,mmTi=0,mmBs=0,mmCn=0,brOn=0,brK=0,brN=0,brT=0,brBest=0;
+const BRK='pemanah_bossrush_v1';
+try{brBest=M.max(0,+localStorage.getItem(BRK)|0)}catch(x){}
+const mmT=()=>M.floor(mmTi/60)+':'+('0'+M.floor(mmTi%60)).slice(-2);
 const CG=[1,2,3,0,2,3];
 function save(){try{localStorage.setItem(SK,JSON.stringify(sv))}catch(x){}}
 setInterval(save,4000);
@@ -49,7 +53,7 @@ return o;
 }
 
 function killP(){
-sv.cw=1;save();
+if(!mmOn)sv.cw=1;save();
 p.hp=0;p.dead=.001;p.dr=0;p.ch=0;p.go=0;p.fy=0;p.vx*=.3;shake=9;
 for(let i=0;i<14;i++)sp(3,p.x,p.y-30,rnd(-160,160),rnd(-260,-40),rnd(.4,.8),2,'160,70,60',600,1.5);
 dust(p.x,GY,10,100);
@@ -88,13 +92,13 @@ if(e.hp<=0)killE(e);
 }
 function killE(e){
 e.hp=0;e.dd=.001;e.wu=0;
-const cn=xzCn(e.boss?20+WV.n*2:CG[e.t]);sv.coins+=cn;WV.k++;xzKill(e,cn);
+const cn=brOn?20:mmOn?0:xzCn(e.boss?20+WV.n*2:CG[e.t]);sv.coins+=cn;WV.k++;xzKill(e,cn);
 p.uc=M.min(1,p.uc+(e.boss?.3:.05));if(SPC)cmbCh(e.boss?.3:.04);
 const z=e.sz;
 dust(e.x,GY,e.boss?16:6,e.boss?160:70);
 for(let i=0;i<(e.boss?30:10);i++)sp(3,e.x+rnd(-8,8)*z,e.y-rnd(10,55)*z,rnd(-200,200),rnd(-320,-60),rnd(.35,.8),2,e.t==2||e.boss?'255,205,130':'215,205,185',600,1.2);
 shake=M.max(shake,e.boss?12:2);
-if(e.boss){if(!p.dead)p.hp=M.min(p.mh,p.hp+35*gDm());ban('Boss tumbang')}
+if(e.boss){if(!p.dead)p.hp=M.min(p.mh,p.hp+35*gDm());ban(brOn?'Boss tumbang  -  +20 koin':'Boss tumbang');if(brOn){brK++;if(brK>brBest){brBest=brK;try{localStorage.setItem(BRK,brBest)}catch(x){}}}}
 save();
 }
 
