@@ -24,6 +24,12 @@
 #apkm .apkb:active{transform:scale(.97)}
 #apkm .apkl{display:flex;align-items:center;justify-content:center;gap:10px;margin:8px 0 0;font-size:14px;font-weight:600;color:#4a4d52;cursor:pointer;user-select:none;-webkit-user-select:none}
 #apkm .apkl input{position:static;display:inline-block;width:20px;height:20px;margin:0;padding:0;flex:none;accent-color:#5a5d63;opacity:1}
+#lsm{position:fixed;left:0;top:0;right:0;bottom:0;z-index:100000;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;box-sizing:border-box;background:#0c1220;color:#fff;text-align:center;font-family:system-ui,-apple-system,sans-serif;touch-action:none}
+#lsm svg{width:84px;height:84px;fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;animation:lsr 2.2s ease-in-out infinite}
+#lsm b{font-size:19px;font-weight:800;line-height:1.35}
+#lsm span{font-size:14px;font-weight:500;line-height:1.5;opacity:.7}
+@keyframes lsr{0%,25%{transform:rotate(0)}65%,100%{transform:rotate(-90deg)}}
+@media (orientation:portrait){#lsm{display:flex}}
 </style>
 </head>
 <body>
@@ -62,6 +68,7 @@
 <div id="nm"><div class="nc"><b>Buat Nama Pemain</b><span>Nama ini akan tampil di leaderboard.</span><input id="ni" maxlength="14" autocomplete="off" spellcheck="false" placeholder="Ketik namamu"><i id="ne"></i><div id="nb">Mulai</div></div></div>
 <div id="of"><svg viewBox="0 0 64 64"><path d="M19 47h27a11 11 0 0 0 1.6-21.9A15 15 0 0 0 18.4 28 9.6 9.6 0 0 0 19 47z" fill="#dfe6f5" stroke="#8f9bc4" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 10l44 44" stroke="#0c1220" stroke-width="8" stroke-linecap="round"/><path d="M10 10l44 44" stroke="#e0405a" stroke-width="4" stroke-linecap="round"/></svg><b>Gagal terhubung ke server</b></div>
 <div id="apkm"><div class="apkc"><b class="apkt">Tetap main di browser atau download APK?</b><div class="apkb" id="apkb1">Tetap di browser</div><a class="apkb" id="apkb2" href="https://www.mediafire.com/file/oncv6b55oniqapy/A.+WOAS_1.apk/file" target="_blank" rel="noopener">Download</a><label class="apkl"><input type="checkbox" id="apkcb"><span>Jangan tampilkan lagi hari ini</span></label></div></div>
+<div id="lsm"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><b>Putar HP ke mode lanskap</b><span>Game ini hanya bisa dimainkan secara lanskap.</span></div>
 <script src="wg of archer/core.js"></script>
 <script src="wg of archer/input.js"></script>
 <script src="wg of archer/particles.js"></script>
@@ -123,6 +130,21 @@ document.getElementById('apkb2').addEventListener('click',close);
 ['touchstart','pointerdown','mousedown'].forEach(function(n){
 m.addEventListener(n,function(e){e.stopPropagation();});
 });
+function lockL(){
+try{
+var o=screen.orientation;
+if(o&&o.lock){
+var p=o.lock('landscape');
+if(p&&p.catch)p.catch(function(){});
+}
+}catch(x){}
+}
+document.addEventListener('fullscreenchange',lockL);
+document.addEventListener('webkitfullscreenchange',lockL);
+['click','touchend','pointerup'].forEach(function(n){
+document.addEventListener(n,lockL,true);
+});
+lockL();
 })();
 </script>
 </body>
