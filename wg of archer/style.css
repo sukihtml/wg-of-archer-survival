@@ -227,6 +227,10 @@ body.of #of{display:flex}
 #yk.on{display:flex}
 .yr{display:flex;gap:10px;justify-content:flex-end}
 .yr .bt{cursor:pointer}
+.mdc.m3{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 6px,transparent 6px 12px),linear-gradient(110deg,#4a3a0c,#c9a24a)}
+.mdc.m3.hd{border-color:#ffe09a;animation:hdg 1.6s ease-in-out infinite}
+.mdc.m3.hd::after{content:"HADIAH";position:absolute;top:8px;right:-26px;transform:rotate(35deg);padding:2px 30px;background:#ffd45a;color:#4a3a0c;font-size:10px;font-weight:800;letter-spacing:.08em}
+@keyframes hdg{0%,100%{box-shadow:0 0 6px rgba(255,214,110,.35)}50%{box-shadow:0 0 22px rgba(255,214,110,.95)}}
 .mdc.m2{background:repeating-linear-gradient(135deg,rgba(255,255,255,.07) 0 6px,transparent 6px 12px),linear-gradient(110deg,#2a1a4a,#c0392b)}
 #rdi{width:100%;height:40px;margin-top:6px;padding:0 12px;box-sizing:border-box;border-radius:12px;border:1px solid rgba(220,228,244,.25);background:rgba(18,24,38,.7);color:#f4e8d2;font:600 16px system-ui,sans-serif;letter-spacing:1px;text-transform:uppercase;outline:none;-webkit-user-select:text;user-select:text}
 #rdi::placeholder{text-transform:none;letter-spacing:0}

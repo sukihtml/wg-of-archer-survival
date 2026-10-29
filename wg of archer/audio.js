@@ -824,6 +824,55 @@ auT({t,f:90,f2:28,d:.8,v:.6,a:.002,w:.2});
 auN({t,ft:'lowpass',f:1400,f2:90,d:.7,v:.45,a:.002,br:1,w:.25});
 auDuck(.5,.2,.5);
 };
+SX.pvFound=()=>{
+const t=ct();
+auN({t,ft:'bandpass',f:300,f2:3200,q:1.1,d:.3,v:.07,a:.3,w:.35});
+auT({t:t+.28,f:110,f2:52,d:.5,v:.4,a:.003,w:.25});
+for(const f of[392,587.33,783.99])auT({t:t+.3,ty:'triangle',f,d:1.1,v:.035,a:.01,lp:3200,w:.6});
+};
+SX.pvWin=()=>{
+const t=ct();
+auT({t,f:73.42,f2:36.7,d:1.2,v:.5,a:.003,w:.3});
+auN({t,ft:'highpass',f:1400,d:.35,v:.1,a:.0005,w:.35});
+for(const r of[[293.66,0],[369.99,.07],[440,.14],[587.33,.21],[739.99,.3]]){
+auT({t:t+r[1],ty:'triangle',f:r[0],d:1.8,v:.05,a:.006,lp:4200,w:.65});
+auT({t:t+r[1],f:r[0]*2.76,d:.5,v:.012,a:.002,w:.5});
+}
+auT({t,ty:'sawtooth',f:146.83,d:2.4,v:.04,a:.25,lp:700,w:.6});
+auT({t,ty:'sawtooth',f:147.9,d:2.4,v:.035,a:.25,lp:700,w:.6});
+auDuck(.55,1.2,1.2);
+};
+SX.pvLose=()=>{
+const t=ct();
+auT({t,f:98,f2:44,d:1,v:.42,a:.004,w:.3});
+auN({t,ft:'lowpass',f:900,f2:90,d:.7,v:.2,a:.004,br:1,w:.3});
+for(const r of[[293.66,0],[261.63,.22],[220,.5]])auT({t:t+r[1],ty:'triangle',f:r[0],d:1.3,v:.04,a:.02,lp:1400,w:.6});
+auDuck(.6,.8,1);
+};
+SX.pvRank=()=>{
+const t=ct(),h=t+1.05;
+auN({t,ft:'bandpass',f:250,f2:6500,q:1.4,d:.15,v:.14,a:.9,w:.4});
+auT({t,ty:'sawtooth',f:73.42,f2:146.83,fd:1,d:.1,v:.1,a:.95,lp:600,w:.4});
+auT({t:h,f:90,f2:28,d:1.6,v:.7,a:.003,w:.35});
+auN({t:h,ft:'highpass',f:900,d:.5,v:.25,a:.0005,w:.4});
+auN({t:h,ft:'lowpass',f:1500,f2:80,d:1.2,v:.3,a:.002,br:1,w:.3});
+for(const r of[[293.66,0],[440,.08],[587.33,.16],[739.99,.24],[880,.32],[1174.66,.4]]){
+auT({t:h+r[1],ty:'triangle',f:r[0],d:2.4,v:.045,a:.008,lp:5000,w:.7});
+auT({t:h+r[1],f:r[0]*2.76,d:.6,v:.012,a:.002,w:.5});
+}
+for(const f of[146.83,220,293.66])auT({t:h,ty:'sawtooth',f,d:3,v:.03,a:.5,lp:900,w:.7});
+auDuck(.4,2.4,1);
+};
+SX.pvCoin=()=>{
+const t=ct();
+for(const r of[[1567.98,0],[2093,.07],[2637.02,.14]])auT({t:t+r[1],f:r[0],d:.45,v:.04,a:.001,w:.5});
+auT({t,f:3136,d:.1,v:.015,a:.0005});
+};
+window.pvSfx=k=>{
+if(!auOn())return;
+const f=SX[k];
+if(f)try{f()}catch(x){}
+};
 window.cmbSfx=k=>{
 if(!auOn())return;
 const f=SX['cm'+k];

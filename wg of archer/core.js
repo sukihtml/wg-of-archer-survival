@@ -5,10 +5,12 @@ let W,H,sc,VW,VH,GY,dd,T=0,DT=.016,cam=0,shake=0,gBg,gFg,gGr;
 const STK='pemanah_set_v1',STM={gq:2,fp:2,fl:5,ly:1,wa:1},ST={gq:2,fp:2,fl:0,ly:0,wa:0},GQC=[.75,1.2,1.6],FPI=[29.5,13.5,0];
 try{const o=JSON.parse(localStorage.getItem(STK)||'null');if(o)for(const k in STM)if(o[k]!=null)ST[k]=M.max(0,M.min(STM[k],o[k]|0))}catch(x){}
 function rs(){
+const oG=GY;
 dd=M.min(devicePixelRatio||1,GQC[ST.gq]);W=innerWidth;H=innerHeight;
 cv.width=W*dd;cv.height=H*dd;
 sc=M.max(.55,M.min(1.5,H/520,W/600));
 VW=W/sc;VH=H/sc;GY=M.round(VH*.8);
+if(oG)try{p.y+=GY-oG}catch(x){}
 gBg=g.createLinearGradient(0,0,0,GY);
 gBg.addColorStop(0,'#050a1b');gBg.addColorStop(.3,'#0e1a3e');gBg.addColorStop(.6,'#22346a');gBg.addColorStop(.85,'#4a5a92');gBg.addColorStop(1,'#938bb8');
 gFg=g.createLinearGradient(0,GY-90,0,GY);

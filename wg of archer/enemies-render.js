@@ -380,6 +380,8 @@ g.restore();
 g.restore();
 }
 function drawEn(e){
+if(e.bot){duDraw(e);return}
+if(e.bq){duDrawQ(e);return}
 const z=e.sz,sn=M.min(1,M.abs(e.vx)/e.sp),id=M.sin(T*1.7+e.id),dy=e.dd>0;
 shd(e.x,(e.t==2?23:18)*z,.64*(dy?M.max(0,1-e.dd):1));
 g.save();g.translate(e.x,e.y);
@@ -392,6 +394,7 @@ if(e.hf>0)gl('r',e.x,e.y-30*z,30*z,e.hf*2.8);
 }
 function drawPr(){
 for(const q of Pr){
+if(q.t=='k'){duAd(q);continue}
 if(q.t=='o'){
 gl('c',q.x,q.y,15,.6);
 g.fillStyle='#dfe9f6';g.beginPath();g.arc(q.x,q.y,2.6,0,TAU);g.fill();

@@ -1,7 +1,7 @@
 function upH(dt){
 p.inv-=dt;p.hu-=dt;p.rg-=dt;GQ.l=M.max(0,GQ.l-dt);
 FXA.fl=M.max(0,FXA.fl-dt*1.6);FXA.sa=M.max(0,FXA.sa-dt);
-if(p.dead){p.dead+=dt;if(p.dead>3.2)menuGo()}
+if(p.dead){p.dead+=dt;if(p.dead>3.2&&!pvOn)menuGo()}
 else if(p.rg<=0&&p.hp<p.mh)p.hp=M.min(p.mh,p.hp+2*gDm()*dt);
 if(msg){msg.l-=dt;if(msg.l<=0)msg=null}
 }

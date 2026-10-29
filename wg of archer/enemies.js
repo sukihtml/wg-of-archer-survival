@@ -52,6 +52,7 @@ WV.n=n;sv.cw=n;if(n>sv.hi)sv.hi=n;save();WV.q=3+n*2;WV.bs=n%5==0?1:0;WV.bt=0;spT
 ban('Gelombang '+n);
 }
 function spw(dt){
+if(duOn){duSp(dt);return}
 if(p.dead||!WV.n)return;
 if(mmOn){if(brOn)brSp(dt);else mmSp(dt);return}
 if(WV.bt>0){WV.bt-=dt;if(WV.bt<=0)waveGo(WV.n+1);return}
@@ -222,6 +223,8 @@ for(let i=E.length-1;i>=0;i--){
 const e=E[i];e.y=GY-(e.al||0);
 if(e.dd){if(e.al>0)e.al=M.max(0,e.al-520*dt);e.dd+=dt;e.x+=e.vx*dt;e.vx*=M.exp(-dt*6);if(e.dd>(e.boss?2:1))E.splice(i,1);continue}
 e.hf-=dt;e.cd-=dt;
+if(e.bot){upBot(e,dt);continue}
+if(e.bq){upBq(e,dt);continue}
 ambE(e,dt);
 if(e.boss){if(e.t==7)upBossR(e,dt);else upBoss(e,dt);continue}
 if(e.fl){upFly(e,dt);continue}

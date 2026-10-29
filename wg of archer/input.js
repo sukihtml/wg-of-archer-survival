@@ -1,7 +1,7 @@
 const K={},TT={};
 const KM={l:['KeyA','ArrowLeft'],r:['KeyD','ArrowRight'],j:['KeyW','ArrowUp','Space'],f:['KeyJ','KeyF'],s:['KeyK','KeyS','ArrowDown'],q:['KeyQ','KeyL'],u:['KeyE','KeyU'],v:['KeyR','KeyI'],m:['KeyT','KeyO'],x:['KeyX','KeyN']};
 const SKN=['q','u','v','m','x'];
-const inp=n=>!p.dead&&(KM[n].some(c=>K[c])||TT[n])&&(!SKN.includes(n)||hasSk(n));
+const inp=n=>!p.dead&&!(duOn&&duS==0)&&(KM[n].some(c=>K[c])||TT[n])&&(!SKN.includes(n)||hasSk(n));
 addEventListener('keydown',e=>{K[e.code]=1;if(e.code.startsWith('Arrow')||e.code=='Space')e.preventDefault()});
 addEventListener('keyup',e=>{K[e.code]=0});
 cv.addEventListener('contextmenu',e=>e.preventDefault());

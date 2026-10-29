@@ -82,7 +82,8 @@ for(let i=0;i<10;i++)sp(3,s.x,s.y-rnd(15,50),rnd(-150,150),rnd(-260,-40),rnd(.3,
 }
 }
 function hurtE(e,d,dx){
-if(e.dd)return;
+if(e.dd||((e.bot||e.bq)&&duS!=1))return;
+if(e.bot&&e.sh>.6&&dx==-e.f){d*=.15;dx*=.2;e.q.sf=1;ring(e.x+e.f*20,e.y-26,'160,200,220',22)}
 e.hp-=d;e.hf=.14;
 e.vx+=dx*(e.boss?18:e.t==2?90:170);
 const c=e.boss?'150,150,160':ET[e.t].pc,z=e.sz;
@@ -91,6 +92,7 @@ for(let i=0;i<4;i++)sp(3,e.x,e.y-rnd(25,50)*z,dx*rnd(60,220)+rnd(-40,40),rnd(-18
 if(e.hp<=0)killE(e);
 }
 function killE(e){
+if(e.bot||e.bq){e.hp=0;e.dd=.001;e.wu=0;if(e.bot)duKo(1);dust(e.x,GY,8,80);shake=M.max(shake,8);return}
 e.hp=0;e.dd=.001;e.wu=0;
 const cn=brOn?20:mmOn?0:xzCn(e.boss?20+WV.n*2:CG[e.t]);sv.coins+=cn;WV.k++;xzKill(e,cn);
 p.uc=M.min(1,p.uc+(e.boss?.3:.05));if(SPC)cmbCh(e.boss?.3:.04);

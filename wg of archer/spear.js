@@ -829,7 +829,7 @@ const SW='<path d="M7 7h11l-3-3M17 17H6l3 3"/>';
 if(typeof document!='undefined')for(const k of ['f','q','u','v','m']){const el=document.getElementById(k),s=el&&el.querySelector('svg');if(s)BT[k]=[s,s.innerHTML]}
 function spIcons(){for(const k in BT)BT[k][0].innerHTML=SPC?(k=='v'?SW:dxT.IC[k]):BT[k][1]}
 function spSet(v){SPC=v;try{localStorage.setItem('wg_spc',v)}catch(x){}spIcons();if(typeof skSync=='function')skSync()}
-const hasSk=k=>SPC?(k=='q'||k=='u'||k=='m'||k=='x'):sv.sk.includes(k);
+const hasSk=k=>duOn&&!pvOn?0:SPC?(k=='q'||k=='u'||k=='m'||k=='x'):sv.sk.includes(k);
 function spCard(){
 const on=SPC;
 return '<div class="cd'+(on?' on':'')+'" data-i="6"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:rgb(255,210,31)"><path d="M4 20 15 9M13.5 4.5l6 6-6-1.5zM14 18h7M14 18v3"/></svg></div><b>Pasukan Duo</b><small>Bazoka + Tombak  tukar, bot &amp; ultimate combo</small><div class="bt'+(on?' ds':'')+'">'+(on?'Dipilih':'Pilih')+'</div></div>';
@@ -883,7 +883,7 @@ if(uc!==undefined){g.fillStyle='rgba(8,10,16,.6)';g.fillRect(M.round(x)-10,y-5,2
 window.spUlt=()=>act().Ult();window.spRain=dt=>act().Rain(dt);window.spFall=a=>dxT.Fall(a);window.spAtk=()=>act().Atk();window.spSkill=()=>act().Skill();window.spSk3=()=>act().Sk3();window.spShaft=()=>dxT.Shaft();
 window.spMn=()=>dxS.act=='T'?'Lembing Guntur':'Roket Kluster';window.spQn=()=>dxS.act=='T'?'Tusukan Kilat':'Roket Raksasa';window.spUn=()=>dxS.act=='T'?'Hujan Tombak':'Badai Rudal';
 window.spUpd=dt=>{
-const tv=typeof TT!='undefined'&&TT.v?1:0;
+const tv=typeof TT!='undefined'&&TT.v&&!(duOn&&duS==0)?1:0;
 if(tv&&!pv)swap();
 pv=tv;
 if(!cmb.on)botAI(dt);

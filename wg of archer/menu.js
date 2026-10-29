@@ -440,7 +440,11 @@ const ok=mdOk();
 mdEl.querySelector('.m1').classList.toggle('lk',!ok);
 mdLb.textContent=ok?'Tersedia hari ini  -  1x sehari':'Sudah dimainkan hari ini. Tersedia lagi besok.';
 mdBr.textContent=brBest?'Rekor '+brBest+' bos':'';
-mdEl.classList.add('on');
+const hw=!sv.wg.includes(1),dl=duLeft();
+mdEl.querySelector('.m3').classList.toggle('lk',!dl);
+mdEl.querySelector('.m3').classList.toggle('hd',hw&&dl>0);
+document.getElementById('mdw').textContent=(hw?'HADIAH: Sayap Emas  -  menangkan 2 babak!':'Sayap Emas sudah kamu miliki')+(dl?'  -  Sisa '+dl+'/'+DUMX+' hari ini':'  -  Jatah habis, tersedia lagi besok');
+pvCard();mdEl.classList.add('on');
 }
 function mdClose(){mdEl.classList.remove('on')}
 mdEl.addEventListener('click',e=>{
@@ -449,6 +453,8 @@ const c=e.target.closest('[data-d]');
 if(!c)return;
 const m=+c.dataset.d;
 if(m==1){if(!mdOk())return;ykEl.classList.add('on');return}
+if(m==3){if(!duLeft())return;duUse()}
+if(m==4){mdClose();pvFind();return}
 mdClose();runStart(m);
 });
 ykEl.addEventListener('click',e=>{
@@ -465,7 +471,7 @@ shake=0;msg=null;GQ.l=0;FXA.fl=0;FXA.sa=0;
 cam=p.x-VW*.5+50;
 }
 function menuGo(){
-inMenu=1;WV.n=0;mmOn=0;brOn=0;
+inMenu=1;WV.n=0;mmOn=0;brOn=0;if(pvOn&&!duF)pvRes(0);duOn=0;pvOn=0;skSync();
 resetRun();
 document.body.classList.add('mn');
 mShow('h');
@@ -481,7 +487,7 @@ p.mh=M.round(p.mh*gUh());p.hp=p.mh;
 WV.k=0;WV.ts=T;
 rb=sv.hi;
 wake();
-if(m==2)brGo();else if(m)mmGo();else waveGo(sv.cw);
+if(m==4)pvGo();else if(m==3)duGo();else if(m==2)brGo();else if(m)mmGo();else waveGo(sv.cw);
 }
 function upMn(dt){
 p.vt=mPrev;

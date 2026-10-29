@@ -50,9 +50,9 @@ else{s.fx=rnd(.3,.6);sp(5,x+rnd(-14,14),y-rnd(0,56),rnd(-4,4),rnd(-12,-5),rnd(1.
 }
 function upS(dt){
 SC.forEach((c,i)=>{
-if(sv.sq.includes(i)&&!S.some(s=>s.c===c)){
+if((!duOn||pvOn)&&sv.sq.includes(i)&&!S.some(s=>s.c===c)){
 S.push({c,id:i,x:p.x+c.of,y:GY,vx:0,f:p.f,hp:c.hp*gDm()*(1+.15*sv.sl[i]),mh:c.hp*gDm()*(1+.15*sv.sl[i]),dm:c.dm*pdm()*(1+.15*sv.sl[i]),cd:1,wu:0,sw:0,ph:0,hf:0,dead:0,rg:0,fx:0,aa:0});
-ring(p.x+c.of,GY-30,'230,210,170',40);ring(p.x,p.y-30,AE[S.length].c,50);ban('Gelombang '+WV.n+'  -  '+c.n+' bergabung');
+ring(p.x+c.of,GY-30,'230,210,170',40);ring(p.x,p.y-30,AE[S.length].c,50);ban((duOn?'Babak '+duR:'Gelombang '+WV.n)+'  -  '+c.n+' bergabung');
 }
 });
 for(const s of S){
@@ -96,6 +96,7 @@ ambS(s,dt);
 function upPr(dt){
 for(let i=Pr.length-1;i>=0;i--){
 const q=Pr[i];q.l+=dt;
+if(q.t=='k'){duAr(q,i,dt);continue}
 if(q.t=='o'){
 q.x+=q.vx*dt;q.y+=q.vy*dt;
 if(M.random()<.6)sp(1,q.x,q.y,rnd(-10,10),rnd(-10,10),.3,9,'c');

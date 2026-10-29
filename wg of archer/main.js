@@ -24,6 +24,7 @@ if(wv!==lw){vb.style.setProperty('--v',wv.toFixed(3));vb.classList.toggle('rd',w
 const dv=SPC?(p.k3>0?1-p.k3/SK3:1):(p.dn>0?p.dn/DD:p.dc);
 if(dv!==lx){mdb.style.setProperty('--v',dv.toFixed(3));mdb.classList.toggle('rd',dv>=1);lx=dv}
 cmbBtn();
+if(lvw!==VW){if(lvw)cam=cmb.on?cmb.fx-VW*.5:p.x-VW*(inMenu&&mView!='h'&&W>H?.2:.5)+p.f*50;lvw=VW}
 cam+=((cmb.on?cmb.fx-VW*.5:p.x-VW*(inMenu&&mView!='h'&&W>H?.2:.5)+p.f*50)-cam)*M.min(1,DT*3.2);
 shake*=M.exp(-DT*14);
 g.setTransform(dd*sc,0,0,dd*sc,0,0);
@@ -68,5 +69,5 @@ g.globalAlpha=1;
 }
 }
 const coarse=matchMedia('(pointer:coarse)').matches;
-let last=performance.now(),lfr=0;
+let last=performance.now(),lfr=0,lvw=0;
 requestAnimationFrame(frame);
