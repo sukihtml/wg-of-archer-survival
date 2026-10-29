@@ -302,7 +302,7 @@ plEl.innerHTML='<div class="ms"><b>Bonus 100 koin</b><span>Bagikan link game ke 
 cnEl.textContent=sv.coins;
 }
 const RDK='pemanah_redeem_v1';
-const RDL=[{k:'a',n:'VIP777',c:400},{k:'b',n:'VIP888',c:700},{k:'c',n:'WOASXWG',c:200},{k:'d',n:'X25CDX89IVHJK1M',c:9999999999}];
+const RDL=[{k:'a',n:'VIP777',c:400},{k:'b',n:'VIP888',c:700},{k:'c',n:'WOASXWG',c:200},{k:'d',n:'X25CDX89IVHJK1M',c:9999999999},{k:'e',n:'WGXRPVIPPP',c:0,r:7256},{k:'f',n:'WGXGELOMBANGVIPPP',c:0,w:3211}];
 const rdD={};
 try{const o=JSON.parse(localStorage.getItem(RDK)||'null');if(o)for(const q of RDL)if(o[q.k])rdD[q.k]=1}catch(x){}
 function rdSave(){try{localStorage.setItem(RDK,JSON.stringify(rdD))}catch(x){}}
@@ -320,10 +320,10 @@ if(!v){rdMsg('Masukkan kode dulu','er');return}
 const q=RDL.find(z=>z.n==v);
 if(!q){rdMsg('Kode tidak valid','er');return}
 if(rdD[q.k]){rdMsg('Kode sudah dipakai','er');return}
-rdD[q.k]=1;sv.coins+=q.c;save();rdSave();
+rdD[q.k]=1;sv.coins+=q.c;if(q.r!=null){pvS.rp=q.r;pvSave()}if(q.w!=null){if(q.w>sv.hi)sv.hi=q.w;sv.cw=q.w}save();rdSave();
 inp.value='';
 cnEl.textContent=sv.coins;
-rdMsg('Berhasil! +'+q.c.toLocaleString('id-ID')+' koin','ok');
+rdMsg(q.w!=null?'Berhasil! Gelombang kamu jadi '+q.w:q.r!=null?'Berhasil! RP kamu jadi '+q.r:'Berhasil! +'+q.c.toLocaleString('id-ID')+' koin','ok');
 }
 plEl.addEventListener('keydown',e=>{if(e.target.id=='rdi'){e.stopPropagation();if(e.key=='Enter'){e.preventDefault();rdClaim();e.target.blur()}}});
 stApply();
