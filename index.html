@@ -30,6 +30,11 @@
 #lsm span{font-size:14px;font-weight:500;line-height:1.5;opacity:.7}
 @keyframes lsr{0%,25%{transform:rotate(0)}65%,100%{transform:rotate(-90deg)}}
 @media (orientation:portrait){#lsm{display:flex}}
+#ldg{position:fixed;left:0;top:0;right:0;bottom:0;z-index:100001;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:#0c1220;color:#fff;font-family:system-ui,-apple-system,sans-serif}
+#ldg b{font-size:18px;font-weight:800}
+#ldg .ldb{width:min(260px,70vw);height:8px;border-radius:8px;background:rgba(255,255,255,.15);overflow:hidden}
+#ldg .ldb i{display:block;width:0;height:100%;background:#f3b63f;border-radius:8px}
+#ldg span{font-size:14px;font-weight:600;opacity:.8}
 html.fsd #fs{display:none}
 @media (display-mode:fullscreen),(display-mode:standalone){#fs{display:none}}
 </style>
@@ -65,31 +70,44 @@ html.fsd #fs{display:none}
 </div>
 <div id="pn"><div id="ph"><div class="mb sm" data-a="h"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div><b id="pt"></b></div><div id="tb"></div><div id="pl"></div></div>
 </div>
-<div id="md"><div class="mdw"><div class="mdh"><div class="mb sm" id="mdx"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div><b>Pilih Mode</b></div><div class="mdr"><div class="mdc m0" data-d="0"><svg viewBox="0 0 24 24"><path d="M7.5 3.5c6.5 2.5 6.5 14.5 0 17M7.5 3.5v17M3.5 12h15M14.5 8.5 18.5 12l-4 3.5"/></svg><div class="mdt"><b>Mode Biasa</b><span>Gelombang tanpa akhir, boss muncul setiap 5 gelombang.</span></div></div><div class="mdc m1" data-d="1"><svg viewBox="0 0 24 24"><path d="M5 4c0 4 1 6 3 7M19 4c0 4-1 6-3 7M6 11c0-2 2.5-3.5 6-3.5s6 1.5 6 3.5v4c0 3-2.7 5-6 5s-6-2-6-5zM9.5 13.5h.01M14.5 13.5h.01M9.5 17.5h5"/></svg><div class="mdt"><b>Mode Monster</b><span>Puluhan musuh super tebal dari dua arah, makin kuat tiap menit. 3 boss muncul di detik ke-20. 50 koin setiap menit bertahan.</span><em id="mdl"></em></div></div><div class="mdc m2" data-d="2"><svg viewBox="0 0 24 24"><path d="M4 8.5l3.6 3.4L12 5l4.4 6.9L20 8.5l-1.5 9h-13zM6 20.5h12"/></svg><div class="mdt"><b>Boss Rush</b><span>Bos datang satu per satu tanpa henti dan makin kuat. 20 koin setiap bos tumbang.</span><em id="mdb"></em></div></div></div></div></div>
+<div id="md"><div class="mdw"><div class="mdh"><div class="mb sm" id="mdx"><svg viewBox="0 0 24 24"><path d="M14.5 5.5 8 12l6.5 6.5"/></svg></div><b>Pilih Mode</b></div><div class="mdr"><div class="mdc m0" data-d="0"><svg viewBox="0 0 24 24"><path d="M7.5 3.5c6.5 2.5 6.5 14.5 0 17M7.5 3.5v17M3.5 12h15M14.5 8.5 18.5 12l-4 3.5"/></svg><div class="mdt"><b>Mode Biasa</b><span>Gelombang tanpa akhir, boss muncul setiap 5 gelombang.</span></div></div><div class="mdc m1" data-d="1"><svg viewBox="0 0 24 24"><path d="M5 4c0 4 1 6 3 7M19 4c0 4-1 6-3 7M6 11c0-2 2.5-3.5 6-3.5s6 1.5 6 3.5v4c0 3-2.7 5-6 5s-6-2-6-5zM9.5 13.5h.01M14.5 13.5h.01M9.5 17.5h5"/></svg><div class="mdt"><b>Mode Monster</b><span>Puluhan musuh super tebal dari dua arah, makin kuat tiap menit. 3 boss muncul di detik ke-20. 50 koin setiap menit bertahan.</span><em id="mdl"></em></div></div><div class="mdc m2" data-d="2"><svg viewBox="0 0 24 24"><path d="M4 8.5l3.6 3.4L12 5l4.4 6.9L20 8.5l-1.5 9h-13zM6 20.5h12"/></svg><div class="mdt"><b>Boss Rush</b><span>Bos datang satu per satu tanpa henti dan makin kuat. 20 koin setiap bos tumbang.</span><em id="mdb"></em></div></div><div class="mdc m3" data-d="3"><svg viewBox="0 0 24 24"><path d="M5 19 17 7M13 7h4v4M19 19 7 7M11 7H7v4"/></svg><div class="mdt"><b>Mode 1 vs 1</b><span>Duel panah lawan bot super jago (evolusi sukixwg + Sayap Emas). 3 babak, siapa menang 2 babak duluan. Tanpa skill, tanpa squad.</span><em id="mdw"></em></div></div></div></div></div>
 <div id="yk"><div class="nc"><b>Yakin?</b><span>Mode Monster hanya bisa dimainkan 1x sehari. Jatah hari ini hangus begitu kamu mulai.</span><div class="yr"><div class="bt ds" id="yn">Batal</div><div class="bt" id="yy">Yakin, Main</div></div></div></div>
 <div id="nm"><div class="nc"><b>Buat Nama Pemain</b><span>Nama ini akan tampil di leaderboard.</span><input id="ni" maxlength="14" autocomplete="off" spellcheck="false" placeholder="Ketik namamu"><i id="ne"></i><div id="nb">Mulai</div></div></div>
 <div id="of"><svg viewBox="0 0 64 64"><path d="M19 47h27a11 11 0 0 0 1.6-21.9A15 15 0 0 0 18.4 28 9.6 9.6 0 0 0 19 47z" fill="#dfe6f5" stroke="#8f9bc4" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 10l44 44" stroke="#0c1220" stroke-width="8" stroke-linecap="round"/><path d="M10 10l44 44" stroke="#e0405a" stroke-width="4" stroke-linecap="round"/></svg><b>Gagal terhubung ke server</b></div>
 <div id="apkm"><div class="apkc"><b class="apkt">Tetap main di browser atau download APK?</b><div class="apkb" id="apkb1">Tetap di browser</div><a class="apkb" id="apkb2" href="https://www.mediafire.com/file/oncv6b55oniqapy/A.+WOAS_1.apk/file" target="_blank" rel="noopener">Download</a><label class="apkl"><input type="checkbox" id="apkcb"><span>Jangan tampilkan lagi hari ini</span></label></div></div>
 <div id="lsm"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><b>Putar HP ke mode lanskap</b><span>Game ini hanya bisa dimainkan secara lanskap.</span></div>
-<script src="wg of archer/core.js"></script>
-<script src="wg of archer/input.js"></script>
-<script src="wg of archer/particles.js"></script>
-<script src="wg of archer/player.js"></script>
-<script src="wg of archer/projectiles.js"></script>
-<script src="wg of archer/character.js"></script>
-<script src="wg of archer/spear.js"></script>
-<script src="wg of archer/game-state.js"></script>
-<script src="wg of archer/fitur.js"></script>
-<script src="wg of archer/enemies.js"></script>
-<script src="wg of archer/squad.js"></script>
-<script src="wg of archer/squad-render.js"></script>
-<script src="wg of archer/enemies-render.js"></script>
-<script src="wg of archer/hud.js"></script>
-<script src="wg of archer/combo.js"></script>
-<script src="wg of archer/world.js"></script>
-<script src="wg of archer/menu.js"></script>
-<script src="wg of archer/audio.js"></script>
-<script src="wg of archer/main.js"></script>
+<div id="ldg"><b>Memuat game</b><div class="ldb"><i></i></div><span>0%</span></div>
+<script>
+(function(){
+var L=['wg of archer/core.js','wg of archer/input.js','wg of archer/particles.js','wg of archer/player.js','wg of archer/projectiles.js','wg of archer/character.js','wg of archer/spear.js','wg of archer/game-state.js','wg of archer/fitur.js','wg of archer/enemies.js','wg of archer/squad.js','wg of archer/squad-render.js','wg of archer/enemies-render.js','wg of archer/hud.js','wg of archer/duel.js','wg of archer/pvp.js','wg of archer/combo.js','wg of archer/world.js','wg of archer/menu.js','wg of archer/audio.js','wg of archer/main.js'];
+var bar=document.querySelector('#ldg .ldb i'),tx=document.querySelector('#ldg span'),ld=document.getElementById('ldg');
+var pr=L.map(function(){return 0}),tt=[];
+function show(){
+var s=0;for(var i=0;i<pr.length;i++)s+=pr[i];
+var v=Math.min(100,Math.round(s/L.length*100));
+bar.style.width=v+'%';tx.textContent=v+'%';
+}
+function get(i){
+return new Promise(function(ok){
+var x=new XMLHttpRequest();
+x.open('GET',encodeURI(L[i]));
+x.onprogress=function(e){if(e.lengthComputable&&e.total){pr[i]=Math.min(.99,e.loaded/e.total);show()}};
+x.onload=function(){pr[i]=1;show();tt[i]=x.status<400?x.responseText:'';ok()};
+x.onerror=function(){pr[i]=1;show();tt[i]='';ok()};
+x.send();
+});
+}
+Promise.all(L.map(function(_,i){return get(i)})).then(function(){
+for(var i=0;i<tt.length;i++){
+var s=document.createElement('script');
+s.text=tt[i];
+document.body.appendChild(s);
+}
+bar.style.width='100%';tx.textContent='100%';
+requestAnimationFrame(function(){ld.style.display='none'});
+});
+})();
+</script>
 <script>
 (function(){
 if('serviceWorker' in navigator){
