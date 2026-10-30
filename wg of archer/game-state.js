@@ -25,7 +25,7 @@ addEventListener('pageshow',wake);
 addEventListener('focus',wake);
 const ban=t=>{msg={t,l:3.4,m:3.4}};
 const sgn=v=>v<0?-1:1;
-const wgT=()=>SPC?0:sv.ws||(p.vt==4?1:p.vt==5?2:0);
+const wgT=()=>SPC?0:sv.ws;
 const pdm=()=>AE[evl()].d*gDm();
 const gUh=()=>1+.1*sv.up[0],gUd=()=>(1+.1*sv.up[1]+.12*xzB.d)*(xzT.dm>0?1.5:1),gUs=()=>1+.05*sv.up[2]+.1*xzB.s,gUm=()=>.1*sv.up[3]+.08*xzB.m;
 

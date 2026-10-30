@@ -15,7 +15,7 @@ return q;
 }
 function duMk(sd){
 const cf=duCf,h=cf.hp*pdm();
-E.push({t:0,bot:1,cf,ws:pvOn?0:1,x:p.x+sd*M.min(520,VW*.42),y:GY,vx:0,f:-sd,hp:h,mh:h,sp:cf.sp,dm:0,rg:0,cd:0,wu:0,mw:1,sw:0,ph:0,hf:0,dd:0,sz:1,boss:0,id:0,fx:0,stp:0,al:0,vz:0,fy:0,dr:0,ch:0,tg:1,sh:0,shT:0,cw:.6,jb:0,mt:0,ht:2,ft:0,dir:1,ta:0,pz:0,rj:rnd(2,5),lk:0,lm:1,qk:cf.qc*rnd(.4,.8),uct:0,ut:0,ua:0,fm:pvOn?pvFm():1,fq:rnd(1.8,4),cm:0,pd:0,uch:pvOn?pvUc:0,lh:h,lp:p.hp,ud:0,uw:0,hbm:0,hbt:0,hbc:rnd(2,5),hjt:0,wg:1,wgt:0,lw:0,mo:pvOn?pvMo:0,ab:pvOn?pvAb:0,q:duQ(duVt)});
+E.push({t:0,bot:1,cf,ws:pvOn?(duVt==4?1:duVt==5?2:0):1,x:p.x+sd*M.min(520,VW*.42),y:GY,vx:0,f:-sd,hp:h,mh:h,sp:cf.sp,dm:0,rg:0,cd:0,wu:0,mw:1,sw:0,ph:0,hf:0,dd:0,sz:1,boss:0,id:0,fx:0,stp:0,al:0,vz:0,fy:0,dr:0,ch:0,tg:1,sh:0,shT:0,cw:.6,jb:0,mt:0,ht:2,ft:0,dir:1,ta:0,pz:0,rj:rnd(2,5),lk:0,lm:1,qk:cf.qc*rnd(.4,.8),uct:0,ut:0,ua:0,fm:pvOn?pvFm():1,fq:rnd(1.8,4),cm:0,pd:0,uch:pvOn?pvUc:0,lh:h,lp:p.hp,ud:0,uw:0,hbm:0,hbt:0,hbc:rnd(2,5),hjt:0,wg:1,wgt:0,lw:0,mo:pvOn?pvMo:0,ab:pvOn?pvAb:0,q:duQ(duVt)});
 }
 function duNew(){
 E.length=0;Pr.length=0;A.length=0;S.length=0;
@@ -73,20 +73,23 @@ a=M.atan2(ey-215*t0*t0,M.max(30,ex));
 }
 return M.max(-.7,M.min(.6,a));
 }
+const duEm=v=>pvOn?1+.15*v:1;
 function duShoot(ox,oy,d,c,dm,v,cf,xe,bi){
 const s=480+c*760,a=duAim(ox,oy,d,s)+(M.random()<cf.eb?rnd(-cf.em,cf.em):rnd(-cf.er,cf.er))+(xe?rnd(-xe,xe):0)+(bi||0);
-Pr.push({t:'k',x:ox,y:oy,vx:d*M.cos(a)*s,vy:M.sin(a)*s,tr:[],l:0,c,dm,v});
+Pr.push({t:'k',x:ox,y:oy,vx:d*M.cos(a)*s,vy:M.sin(a)*s,tr:[],l:0,c,dm:dm*duEm(v),v});
 }
 function duFire(e){
 const c=M.max(.18,e.ch),d=e.f,ox=e.x+d*26,oy=e.y-45,cf=e.cf,v=e.q.vt;
-duShoot(ox,oy,d,c,p.mh*(.015+(cf.dm-.015)*c),v,cf,cf.hu?(e.cm>0?.02+.07*(1-e.fm):0)+(1-e.fm)*(.03+cf.er*2):0,e.ab*(1+(1-e.fm)));
-e.dr=0;e.ch=0;e.cw=rnd(cf.c0,cf.c1)*(1-.2*e.mo);e.q.rc=1;
-ring(ox,oy,AE[v].c,22+c*22);
+const db=pvOn?(pvO.db==null?(pvO.db=M.random()<.5?rnd(.2,.6):0):pvO.db):0;
+for(let n=0,m=M.random()<db?2:1;n<m;n++)duShoot(ox,oy,d,c,p.mh*(.015+(cf.dm-.015)*c),v,cf,cf.hu?(e.cm>0?.02+.07*(1-e.fm):0)+(1-e.fm)*(.03+cf.er*2):0,e.ab*(1+(1-e.fm))+(n?(M.random()<.5?-.05:.05):0));
+e.dr=0;e.ch=0;e.cw=e.sb>0?(e.sb--,rnd(.06,.15)):rnd(cf.c0,cf.c1)*(1-.2*e.mo);e.q.rc=1;
+ring(ox,oy,AE[v].c,22+c*22);ring(ox,oy,'255,255,255',12+c*14);
 sp(1,ox,oy,0,0,.2,50,AE[v].k);
-for(let i=0;i<6;i++){const b=rnd(-.5,.5);sp(3,ox,oy,d*M.cos(b)*rnd(120,360)*c+d*60,M.sin(b)*rnd(120,300)*c,rnd(.2,.4),2,AE[v].c,500,2)}
+for(let i=0;i<12+v*2;i++){const b=rnd(-.6,.6);sp(3,ox,oy,d*M.cos(b)*rnd(120,420)*c+d*60,M.sin(b)*rnd(120,340)*c,rnd(.2,.45),2.2,AE[v].c,500,2)}
+if(v>=4)ring(ox,oy,AE[v].c,40+c*30);
 }
 function duQk(e){
-const d=e.f,ox=e.x+d*26,oy=e.y-45,v=e.q.vt,cf=e.cf,a=duAim(ox,oy,d,1000),dm=p.mh*.014*(cf.dm/.06);
+const d=e.f,ox=e.x+d*26,oy=e.y-45,v=e.q.vt,cf=e.cf,a=duAim(ox,oy,d,1000),dm=p.mh*.014*(cf.dm/.06)*duEm(v);
 for(let i=-2;i<=2;i++){const b=a+i*.1;Pr.push({t:'k',x:ox,y:oy,vx:d*M.cos(b)*1000,vy:M.sin(b)*1000,tr:[],l:0,c:.85,dm,v})}
 e.qk=cf.qc*rnd(.9,1.2);e.dr=0;e.ch=0;e.cw=.3;e.q.rc=1;shake=M.max(shake,3);
 ring(ox,oy,AE[v].c,34);
@@ -175,7 +178,7 @@ e.f=sd;
 if(e.shT>0){e.dr=0;e.ch=0}
 else if(act){
 if(!e.dr){
-if(e.cw<=0&&ad>130&&ad<820&&!(th&&tt<.3)&&!(p.sh>.5&&p.f==-sd)){e.dr=1;e.ch=0;e.tg=M.min(1,(ad<250?rnd(.3,.55):rnd(hu?.55:.9,1))*(1-.15*e.mo))}
+if(e.cw<=0&&ad>130&&ad<820&&!(th&&tt<.3)&&!(p.sh>.5&&p.f==-sd)){e.dr=1;e.ch=0;if(hu&&!(e.sb>0)&&M.random()<.2+.3*cf.dg)e.sb=M.floor(rnd(3,8));e.tg=e.sb>0?rnd(.18,.32):M.min(1,(ad<250?rnd(.3,.55):rnd(hu?.55:.9,1))*(1-.15*e.mo))}
 }else{
 e.ch=M.min(1,e.ch+dt/cf.ct);
 if(th&&tt<.3&&e.ch<.6){e.dr=0;e.ch=0}
@@ -196,7 +199,7 @@ if(e.uw<=0&&(cf.u1>4||p.sh<.5||e.uw<-1.2)){duUl(e);e.uch=0;e.ud=0}
 }
 else{
 e.ut-=dt;e.ua-=dt;
-if(e.ua<=0&&act){e.ua=.17;Pr.push({t:'k',x:p.x+rnd(-260,260),y:-60,vx:rnd(-40,40),vy:rnd(650,900),tr:[],l:0,c:.7,dm:p.mh*.012*(cf.dm/.06),v:q.vt})}
+if(e.ua<=0&&act){e.ua=.17;Pr.push({t:'k',x:p.x+rnd(-260,260),y:-60,vx:rnd(-40,40),vy:rnd(650,900),tr:[],l:0,c:.7,dm:p.mh*.012*(cf.dm/.06)*duEm(q.vt),v:q.vt})}
 }
 }
 q.dr=e.dr;q.ch=e.ch;q.pc=e.ch;
@@ -246,10 +249,12 @@ g.globalAlpha=1;
 }
 function duAr(q,i,dt){
 const a=AE[q.v];
-q.tr.push({x:q.x,y:q.y});if(q.tr.length>10)q.tr.shift();
+q.an=M.atan2(q.vy,q.vx);q.tr.push({x:q.x,y:q.y});if(q.tr.length>16)q.tr.shift();
 q.vy+=430*dt;q.x+=q.vx*dt;q.y+=q.vy*dt;
 if(M.random()<.6)sp(1,q.x-q.vx*.01,q.y-q.vy*.01,rnd(-8,8),rnd(-8,8),.3,8+q.c*6,a.k);
 if(q.c>.5&&M.random()<.5)sp(5,q.x-q.vx*.02,q.y-q.vy*.02,rnd(-24,24),rnd(-24,24),rnd(.3,.5),1.5,a.s,60,2);
+if(q.v==4)sTrP(q,dt);else if(q.v==5)nTrP(q,dt);
+if(M.random()<.5)sp(3,q.x,q.y,rnd(-40,40),rnd(-40,40),rnd(.15,.3),1.6,a.c,200,2);
 let h=0;
 if(!p.dead&&p.inv<=0&&M.abs(q.x-p.x)<14&&q.y>p.y-62&&q.y<p.y+2){hurtP(q.dm,q.x-sgn(q.vx)*50);h=1}
 if(!h)for(const s of S){
@@ -258,30 +263,15 @@ if(M.abs(q.x-s.x)<14&&q.y>s.y-62&&q.y<s.y+2){hurtS(s,q.dm,q.x);h=1;break}
 }
 if(h||q.l>4||q.y>GY){
 if(!h)dust(q.x,GY,3,60);
-ring(q.x,q.y,a.c,16);
-for(let k=0;k<5;k++)sp(3,q.x,q.y,rnd(-120,120),rnd(-160,40),rnd(.2,.4),1.6,a.c,300,2);
+ring(q.x,q.y,a.c,16+q.c*14);ring(q.x,q.y,'255,255,255',10);sp(1,q.x,q.y,0,0,.2,36+q.c*30,a.k);
+for(let k=0;k<12;k++)sp(3,q.x,q.y,rnd(-180,180),rnd(-220,60),rnd(.2,.45),1.8,a.c,300,2);
 Pr.splice(i,1);
 }
 }
 function duAd(q){
-const a=AE[q.v];
-gl(a.k,q.x,q.y,17+q.c*8,.7);
-const n=q.tr.length;
-if(n>1){
-g.save();
-g.globalCompositeOperation='lighter';
-g.strokeStyle='rgba('+a.c+',.5)';g.lineWidth=2+q.c*2;g.lineCap='round';
-g.beginPath();g.moveTo(q.tr[0].x,q.tr[0].y);
-for(let i=1;i<n;i++)g.lineTo(q.tr[i].x,q.tr[i].y);
-g.lineTo(q.x,q.y);g.stroke();
-g.restore();
-}
-g.save();
-g.translate(q.x,q.y);g.rotate(M.atan2(q.vy,q.vx));
-g.fillStyle=a.g;g.fillRect(-16,-1,16,2);
-g.fillStyle=a.f;g.beginPath();g.moveTo(5,0);g.lineTo(-2,-3.2);g.lineTo(-2,3.2);g.closePath();g.fill();
-g.fillStyle=a.h;g.fillRect(-18,-2.4,4,1.2);g.fillRect(-18,1.2,4,1.2);
-g.restore();
+q.an=M.atan2(q.vy,q.vx);q.ev=q.v;q.st=0;
+gl(AE[q.v].k,q.x,q.y,17+q.c*8,.7);
+drawA1(q);
 }
 function duHud(){
 const e=E.find(o=>o.bot),bw=M.min(220,VW*.3),bx=VW-bw-14,by=14;

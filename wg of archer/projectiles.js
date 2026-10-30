@@ -354,10 +354,9 @@ ov(-32.6,0,1.3,1.6,sc);
 g.strokeStyle='rgba(6,8,16,.6)';g.lineWidth=.4;
 g.beginPath();g.ellipse(-32.6,0,1.3,1.6,0,0,TAU);g.stroke();
 }
-function drawA(){
-for(const a of A){
-if(a.sp==2)continue;
-if(a.sp==1){spFall(a);continue}
+function drawA1(a){
+if(a.sp==2)return;
+if(a.sp==1){spFall(a);return}
 const fade=a.st?M.min(1,(4.2-a.l)/.8):1;
 const ae=AE[a.ev];
 g.lineCap='round';g.globalCompositeOperation='lighter';g.strokeStyle='rgb('+ae.t+')';
@@ -378,6 +377,8 @@ if(a.ev>=4&&!a.sp)g.scale(1+a.c*.4,1+a.c*.4);
 if(a.sp)spShaft();else arrowBody(ae,a.ev,a.x*.012);
 g.restore();
 }
+function drawA(){
+for(const a of A)drawA1(a);
 g.globalAlpha=1;
 }
 

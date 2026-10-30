@@ -50,7 +50,7 @@ else{s.fx=rnd(.3,.6);sp(5,x+rnd(-14,14),y-rnd(0,56),rnd(-4,4),rnd(-12,-5),rnd(1.
 }
 function upS(dt){
 SC.forEach((c,i)=>{
-if(!duOn&&sv.sq.includes(i)&&!S.some(s=>s.c===c)){
+if(!duOn&&sv.eq.includes(i)&&!S.some(s=>s.c===c)){
 S.push({c,id:i,x:p.x+c.of,y:GY,vx:0,f:p.f,hp:c.hp*gDm()*(1+.15*sv.sl[i]),mh:c.hp*gDm()*(1+.15*sv.sl[i]),dm:c.dm*pdm()*(1+.15*sv.sl[i]),cd:1,wu:0,sw:0,ph:0,hf:0,dead:0,rg:0,fx:0,aa:0});
 ring(p.x+c.of,GY-30,'230,210,170',40);ring(p.x,p.y-30,AE[S.length].c,50);ban((duOn?'Babak '+duR:'Gelombang '+WV.n)+'  -  '+c.n+' bergabung');
 }

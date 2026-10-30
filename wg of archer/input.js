@@ -1,20 +1,35 @@
 const K={},TT={};
-const KM={l:['KeyA','ArrowLeft'],r:['KeyD','ArrowRight'],j:['KeyW','ArrowUp','Space'],f:['KeyJ','KeyF'],s:['KeyK','KeyS','ArrowDown'],q:['KeyQ','KeyL'],u:['KeyE','KeyU'],v:['KeyR','KeyI'],m:['KeyT','KeyO'],x:['KeyX','KeyN']};
+const KM={l:['KeyA','ArrowLeft'],r:['KeyD','ArrowRight'],j:['KeyW','ArrowUp','Space'],f:['KeyJ','KeyF','Mouse0'],s:['KeyK','KeyS','ArrowDown','Mouse2'],q:['KeyQ','KeyL'],u:['KeyE','KeyU'],v:['KeyR','KeyI'],m:['KeyT','KeyO'],x:['KeyX','KeyN']};
 const SKN=['q','u','v','m','x'];
 const inp=n=>!p.dead&&!(duOn&&duS==0)&&(KM[n].some(c=>K[c])||TT[n])&&(!SKN.includes(n)||hasSk(n));
 addEventListener('keydown',e=>{K[e.code]=1;if(e.code.startsWith('Arrow')||e.code=='Space')e.preventDefault()});
 addEventListener('keyup',e=>{K[e.code]=0});
 cv.addEventListener('contextmenu',e=>e.preventDefault());
-cv.addEventListener('pointerdown',e=>{if(e.pointerType!='mouse')return;if(e.button==0)TT.f=1;if(e.button==2)TT.s=1});
-addEventListener('pointerup',e=>{if(e.pointerType!='mouse')return;if(e.button==0)TT.f=0;if(e.button==2)TT.s=0});
+cv.addEventListener('pointerdown',e=>{if(e.pointerType!='mouse')return;if(e.button==0)K.Mouse0=1;if(e.button==2)K.Mouse2=1});
+addEventListener('pointerup',e=>{if(e.pointerType!='mouse')return;if(e.button==0)K.Mouse0=0;if(e.button==2)K.Mouse2=0});
 
 const bt=[...document.querySelectorAll('.b')].map(el=>({el,k:el.dataset.k,x:0,y:0,r:0}));
 const ptr=new Map();
 const DPJ={el:document.getElementById('dp'),k:'dp',id:null};
 function dpPos(e){
-const r=DPJ.el.getBoundingClientRect(),mx=M.max(1,(r.width-r.height*.72)/2-2),o=M.max(-mx,M.min(mx,e.clientX-(r.left+r.width/2))),dz=mx*.22;
-DPJ.el.style.setProperty('--k',o+'px');
-TT.l=o<-dz?1:0;TT.r=o>dz?1:0;
+if(DPJ.el.classList.contains('nw'))return dpPosN(e);
+const r=DPJ.el.getBoundingClientRect(),mx=M.max(1,r.width/2-r.height*.22-2),cx=r.left+r.width/2,cy=r.top+r.height/2;
+let ox=e.clientX-cx,oy=e.clientY-cy;
+const d=M.hypot(ox,oy);
+if(d>mx){ox*=mx/d;oy*=mx/d}
+const dz=mx*.22;
+DPJ.el.style.setProperty('--k',ox+'px');DPJ.el.style.setProperty('--ky',oy+'px');
+TT.l=ox<-dz?1:0;TT.r=ox>dz?1:0;
+TT.a=(TT.l||TT.r)?(ox<0?-1:1)*M.max(.2,M.min(1,(M.abs(ox)-dz)/M.max(1,mx-dz))):0;
+TT.vy=M.abs(oy)>dz?(oy<0?-1:1)*M.min(1,(M.abs(oy)-dz)/M.max(1,mx-dz)):0;
+}
+function dpPosN(e){
+const r=DPJ.el.getBoundingClientRect(),mx=M.max(1,r.width/2-r.height*.36-2),cx=r.left+r.width/2;
+const ox=M.max(-mx,M.min(mx,e.clientX-cx)),dz=mx*.22;
+DPJ.el.style.setProperty('--k',ox+'px');
+TT.l=ox<-dz?1:0;TT.r=ox>dz?1:0;
+TT.a=(TT.l||TT.r)?(ox<0?-1:1)*M.max(.2,M.min(1,(M.abs(ox)-dz)/M.max(1,mx-dz))):0;
+TT.vy=0;
 }
 function dpDown(e){
 if(DPJ.id!==null)return false;
@@ -26,7 +41,7 @@ function dpRel(e){
 if(DPJ.id!==e.pointerId)return false;
 dpClr();return true;
 }
-function dpClr(){DPJ.id=null;DPJ.el.classList.remove('on');DPJ.el.style.setProperty('--k','0px');TT.l=0;TT.r=0}
+function dpClr(){DPJ.id=null;DPJ.el.classList.remove('on');DPJ.el.style.setProperty('--k','0px');DPJ.el.style.setProperty('--ky','0px');TT.l=0;TT.r=0;TT.a=0;TT.vy=0}
 function mb(){
 for(const b of bt){const r=b.el.getBoundingClientRect();b.x=r.left+r.width/2;b.y=r.top+r.height/2;b.r=r.width/2+12}
 }
@@ -46,6 +61,8 @@ addEventListener('pointermove',e=>{if(e.pointerType!='mouse'&&ptr.has(e.pointerI
 const rel=e=>{if(dpRel(e))return;if(ptr.delete(e.pointerId))sync()};
 addEventListener('pointerup',rel);addEventListener('pointercancel',rel);
 addEventListener('blur',()=>{for(const k in K)K[k]=0;for(const k in TT)TT[k]=0;ptr.clear();sync();dpClr()});
+addEventListener('pagehide',dpClr);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)dpClr()});
 
 const de=document.documentElement,fsb=document.getElementById('fs');
 const fsReq=de.requestFullscreen||de.webkitRequestFullscreen;

@@ -11,31 +11,10 @@ const pvRK=[
 ['#ffd45a','#a8610a','#fff6c8','255,225,120']
 ];
 const pvBN=[['#12306b','#3aa0e8'],['#4a0f1c','#e0643d'],['#0f4a3a','#4be0a8'],['#3a1a6b','#b46bff'],['#5a3a08','#ffd45a'],['#143a4a','#7fe0e8'],['#4a1040','#ff7ac0'],['#222a38','#8fa0c0']];
-const pvNH=['Rizky','Dimas','Aldi','Farel','Naufal','Bagas','Raka','Fikri','Alvin','Galih','Dani','Yoga','Hafiz','Reza','Ilham','Arya','Zidan','Kevin','Rama','Satria','Bayu','Fajar','Wahyu','Putra','Dewa','Angga','Tegar','Revan','Kenzo','Rafi','Nando','Gilang','Vino','Denis','Lutfi','Akbar','Habib','Irfan','Zaki','Budi','Putri','Nadia','Dewi','Rina','Tiara','Salsa','Nisa','Dina','Alex','Mike','Jason','Liam','Chris','Sam','Ryan','Hana','Mei','Kenji','Yuki','Carlos','Andre','Tomas','Lukas','Adit','Rendi','Fahri','Cahya','Mira','Sinta'];
-const pvNA=['Naruto','Sasuke','Luffy','Zoro','Goku','Gojo','Levi','Eren','Killua','Saitama','Itachi','Kakashi','Plus Ultra','Dattebayo','Yare Yare Daze','Za Warudo','Bankai','Nakama','Gear Fifth','Tuturu'];
-const pvNW=['Bayangan','Kopi Susu','Tukang Ngopi','Rajawali','Santuy','Mager','Es Teh','Elang','Macan','Rebahan','Anak Senja','Pemanah Sepi','Noob Master','Nasi Goreng','Kucing Oren','Lagi Gabut','Badai','Pelita','Serigala','Harimau','Garuda','Jagoan Neon','Si Paling Jago','Bintang','Kabut','Petir','Naga','Pendekar','Ksatria','Rubah','Sniper','Ghost','Shadow','Falcon','Storm','Phoenix','Viper','Raven','Blaze','Frost'];
-const pvNT=['ga bisa tidur','ampun bang','gas terus','jangan nyerah','lagi belajar','no mercy','just chill','one shot','try me','kalem aja','wkwk','hehe','siapa takut','ayo main','cuma iseng','santai bos','anak rumahan','tobat bang','mau menang','lag dikit','bukan bot','real human','1 panah 1 kill','gamer biasa','ngantuk berat','besok libur','masih belajar','coba lagi'];
-const pvNS=['XD','99','07','77','21','26','ID','YT','Pro','Jr','TV','Boy','Max','Sky','Z','01','ofc'];
+const pvNL=['Ngawi empire','ell sebelum before','ell sesudah after','amba disini','suki','detektif Suki','wg tukang','objektif-_-','lighting skill','negatif71','WG GW','Madiun squad','Kediri kuat','Solo balapan','Jogja istimewa','Bandung lautan','Malang kota','Surabaya panas','Cirebon udang','Tegal warteg','Banyuwangi','Pacitan','Ponorogo reog','Magetan','Nganjuk','Blitar','Tulungagung','Sragen','Klaten','Purwokerto','Brebes','Medan bos','Palembang','Pontianak','Makassar','Kupang','Ambon manise','Papua','Bali santai','Lombok','Aceh','Kalimantan','Sumatra','Sunda empire','Betawi','Batak','Minang','Japan','Korea','Brazil','Turki','Mesir','Norway','Chile','Peru','Kenya','Nepal','Laos','Vietnam','Thailand','Qatar','Swiss','Finland','Argentina','Maroko','Kuba','Yunani','bahasa alien','bahasa kalbu','english please','hola amigo','konnichiwa','annyeong','bonjour','danke','gracias','namaste','salam kenal','sugeng enjang','matur nuwun','piye kabare','mboh','wes ngantuk','nyuwun sewu','monggo','jangkrik','ora ngerti','kilat biru','petir hitam','bayangan suki','api biru','es krim','roti bakar','mie ayam','seblak','bakso urat','warkop','angkringan','kopi hitam','teh manis','motor tua','sepeda ontel','tukang parkir','tukang las','tukang bakso','tukang kayu','wg kuli','wg santuy','wg jaya','wg pemula','wg bocil','wg kecil','wg ngantuk','wg lapar','wg gabut','wg sepi','positif12','subjektif^^','absolut:v','random:)','~anak hilang~','x_x','._.','o_O','-_-','=_=','zzz','???','!!!','404','null','void','error','admin','guest','anak_senja','si_paling','kang_ojek','mas_bro','om_jago','pak_ketu','bang_toyib','dek_gemes','mbak_kece','abang_ijo','cah_ngawi','cah_solo','cah_jogja','arek_suroboyo','wong_cilik','kuli_panah','raja_iseng','ratu_gabut','bocil_epep','pemula_nih','pemanah malas','panah patah','busur kayu','busur emas','anak panah','panah bengkok','sasaran','tameng retak','perisai kayu','ksatria sepi','raja kecil','pangeran kodok','putri tidur','penyihir lupa','kurcaci','naga ompong','elang laut','macan kemarin','kucing garong','kucing mager','ayam goreng','bebek bakar','ikan asin','kodok ngorek','semut merah','lebah madu','kupu kupu','laba laba','malam jumat','hari senin','jam tiga','pagi buta','sore hari','tengah malam','subuh','dini hari','akhir bulan','tanggal tua','libur dulu','lagi rebahan','baru bangun','belum mandi','lupa pw','sinyal jelek','lag parah','hp kentang','kuota habis','baterai 1%','suki fans','suki kecil','suki ijo','suki merah','suki biru','suki tua','suki muda','suki gaming','ell fans','ell lama','ell baru','ell kembar','amba sini','amba situ','amba aja','amba tukang','negatif','positif','netral','objektif','subjektif','relatif','absolut','kreatif','aktif','pasif','reaktif','defensif','ofensif','detektif','eksklusif','Nol','Satu dua','Tiga','Empat lima','Enam','Tujuh','Delapan','Sembilan','Sepuluh','Seratus','Seribu','Sejuta'];
 const pvPk=a=>a[M.floor(M.random()*a.length)];
 const pvRn=n=>M.floor(M.random()*n);
-function pvGn(){
-const r=M.random();
-let n;
-if(r<.2)n=pvPk(pvNH);
-else if(r<.32)n=pvPk(pvNH)+pvPk(pvNS);
-else if(r<.42)n=pvPk(pvNH)+(10+pvRn(990));
-else if(r<.5)n=pvPk(pvNH).toLowerCase()+(1+pvRn(9999));
-else if(r<.57)n=pvPk(pvNA);
-else if(r<.69)n=pvPk(pvNW);
-else if(r<.79)n=pvPk(pvNT);
-else if(r<.85)n=String(1000+pvRn(899000));
-else if(r<.91)n=pvPk(pvNW)+' '+(1+pvRn(999));
-else if(r<.95)n=pvPk(pvNW).toLowerCase()+pvRn(99);
-else n=pvPk(pvNH).replace(/a/gi,'4').replace(/e/gi,'3').replace(/o/gi,'0').replace(/i/gi,'1');
-return n.slice(0,14).trim()
-}
-const pvNM=[];
-for(let i=0;i<3000;i++)pvNM.push(pvGn());
+const pvNM=pvNL.slice();
 const PVC=[
 {dg:.18,r0:.28,r1:.5,er:.04,eb:.35,em:.12,c0:.7,c1:1.3,ct:.85,sp:240,fl:.12,sh:0,hp:420,dm:.04,qc:16,uc:95,hu:1,ug:.55,hb:.55,u0:1.5,u1:5},
 {dg:.55,r0:.1,r1:.22,er:.02,eb:.2,em:.09,c0:.35,c1:.7,ct:.7,sp:285,fl:.35,sh:1,hp:700,dm:.055,qc:10,uc:70,hu:1,ug:.9,hb:.35,u0:.8,u1:2.5},

@@ -38,7 +38,7 @@ g.textAlign='right';g.fillStyle=WV.n>rb&&!mmOn?'#ffd45a':'rgba(228,234,248,.7)';
 g.font='11px system-ui,sans-serif';
 for(let i=0;i<SC.length;i++){
 const c=SC[i],yy=y+66+i*20,s=S.find(q=>q.c===c);
-if(!s){g.fillStyle='rgba(215,224,242,.32)';g.fillText(sv.sq.includes(i)?c.n:c.n+'  (belum dibeli)',x,yy);continue}
+if(!s){g.fillStyle='rgba(215,224,242,.32)';g.fillText(sv.eq.includes(i)?c.n:c.n+(sv.sq.includes(i)?'  (dilepas)':'  (belum dibeli)'),x,yy);continue}
 g.fillStyle=s.dead?'rgba(215,224,242,.4)':'rgba(215,224,242,.88)';
 g.fillText(s.dead?c.n+'  '+M.ceil(s.dead)+' dtk':c.n,x,yy);
 g.fillStyle='rgba(8,10,16,.55)';g.fillRect(x,yy+4,92,4);

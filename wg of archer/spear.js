@@ -167,7 +167,7 @@ if(dead){
 const xm=(x,y)=>{R(x,y,1,1,'#fff');R(x+2,y,1,1,'#fff');R(x+1,y+1,1,1,'#fff');R(x,y+2,1,1,'#fff');R(x+2,y+2,1,1,'#fff')};
 xm(hx-4,-50+hy);xm(hx+4,-50+hy);
 }else{
-const bl=f.fr%210<5;
+const bl=!inMenu&&f.fr%210<5;
 eye(hx-5,-50+hy,0,P,k,o.e,bl);
 eye(hx+2,-50+hy,1,P,k,o.e,bl);
 }
@@ -235,7 +235,7 @@ A.push({x:p.x+d*20,y:p.y-38,vx:d*700,vy:0,tr:[],st:0,l:0,c:.9,an:d>0?0:PI,dm:42*
 ring(p.x,p.y-30,e.c,26);shake=M.max(shake,3);
 }
 function spAtk(){p.at=0;p.atH=0;p.cd=.42;p.cb^=1;p.vx=p.f*200}
-function spSkill(){p.kc=SKC;p.sk1=0;p.skH=0;p.skE=0;p.cd=.5;p.dr=0;p.ch=0}
+function spSkill(){p.kc=SKC;p.at=-1;p.sk1=0;p.skH=0;p.skE=0;p.cd=.5;p.dr=0;p.ch=0}
 function spStep(){
 const d=F;
 d.x=p.x;d.y=p.y;d.vx=p.vx*1.7/190;d.vy=p.vy*5.4/560;d.d=p.f;d.air=!p.on;d.ch=p.vt&1;d.cb=p.cb;d.fr++;
@@ -595,7 +595,7 @@ if(dead){
 const xm=(x,y)=>{R(x,y,1,1,'#fff');R(x+2,y,1,1,'#fff');R(x+1,y+1,1,1,'#fff');R(x,y+2,1,1,'#fff');R(x+2,y+2,1,1,'#fff')};
 xm(hx-4,-50+hy);xm(hx+4,-50+hy);
 }else{
-const bl=f.fr%210<5;
+const bl=!inMenu&&f.fr%210<5;
 eye(hx-5,-50+hy,0,P,k,o.e,bl);
 eye(hx+2,-50+hy,1,P,k,o.e,bl);
 }
@@ -677,7 +677,7 @@ for(let i=0;i<4+big*3;i++)sp(0,bx,t[1]+rnd(-3,3),-d*rnd(40,150),rnd(-30,-5),rnd(
 p.rv=-d*(big?220:90);shake=M.max(shake,2+big*3);
 }
 function spAtk(){if(p.at>=0||p.sk1>=0||p.rl>=0||p.s3>=0)return;if(F.am<=0){bzRl();return}p.at=0;p.atH=0;p.cd=.42;p.cb^=1}
-function spSkill(){p.kc=SKC;p.sk1=0;p.skH=0;p.skE=0;p.cd=.5;p.dr=0;p.ch=0;p.rl=-1}
+function spSkill(){p.kc=SKC;p.at=-1;p.sk1=0;p.skH=0;p.skE=0;p.cd=.5;p.dr=0;p.ch=0;p.rl=-1}
 function cThrow(){
 const d=p.f,t=F.tip,e=AE[p.vt];
 CK.push({x:t[0],y:t[1],vx:d*600,vy:-300,d,l:0,dm:62*e.d*gDm()*gUd()});
@@ -829,10 +829,10 @@ const SW='<path d="M7 7h11l-3-3M17 17H6l3 3"/>';
 if(typeof document!='undefined')for(const k of ['f','q','u','v','m']){const el=document.getElementById(k),s=el&&el.querySelector('svg');if(s)BT[k]=[s,s.innerHTML]}
 function spIcons(){for(const k in BT)BT[k][0].innerHTML=SPC?(k=='v'?SW:dxT.IC[k]):BT[k][1]}
 function spSet(v){SPC=v;try{localStorage.setItem('wg_spc',v)}catch(x){}spIcons();if(typeof skSync=='function')skSync()}
-const hasSk=k=>duOn&&!pvOn?0:SPC?(k=='q'||k=='u'||k=='m'||k=='x'):sv.sk.includes(k);
+const hasSk=k=>duOn&&!pvOn?0:SPC?(k=='q'||k=='u'||k=='m'||k=='x'):sv.ek.includes(k);
 function spCard(){
 const on=SPC;
-return '<div class="cd'+(on?' on':'')+'" data-i="6"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:rgb(255,210,31)"><path d="M4 20 15 9M13.5 4.5l6 6-6-1.5zM14 18h7M14 18v3"/></svg></div><b>Pasukan Duo</b><small>Bazoka + Tombak  tukar, bot &amp; ultimate combo</small><div class="bt'+(on?' ds':'')+'">'+(on?'Dipilih':'Pilih')+'</div></div>';
+return '<div class="cd'+(on?' on':'')+'" data-i="6"><div class="ic ch"><img src="'+spImg()+'"></div><b>Pasukan Duo</b><small>Bazoka + Tombak  tukar, bot &amp; ultimate combo</small><div class="bt'+(on?' ds':'')+'">'+(on?'Dipilih':'Pilih')+'</div></div>';
 }
 function swap(){
 if(!SPC||inMenu||p.dead||cmb.on)return;

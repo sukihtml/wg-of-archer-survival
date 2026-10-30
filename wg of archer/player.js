@@ -223,12 +223,13 @@ if(p.go>=GCH+GFR){p.go=0;p.gf=0;p.gc=GCD}
 }
 
 function upd(dt){
-const L=inp('l'),R=inp('r'),J=inp('j'),F=inp('f')&&!p.go,S=inp('s')&&!p.go,Q=inp('q'),U=inp('u'),V=inp('v'),Mk=inp('m'),dir=(R?1:0)-(L?1:0);
+DPJ.el.classList.toggle('nw',!wgT());
+const L=inp('l'),R=inp('r'),J=inp('j'),F=inp('f')&&!p.go,S=inp('s')&&!p.go,Q=inp('q'),U=inp('u'),V=inp('v'),Mk=inp('m'),dir=(R||L)&&TT.a&&!KM.l.some(c=>K[c])&&!KM.r.some(c=>K[c])?TT.a:(R?1:0)-(L?1:0);
 p.cd-=dt;
 p.kc=M.max(0,p.kc-dt);
 p.gc=M.max(0,p.gc-dt);
 if(p.ut<=0)p.uc=M.min(1,p.uc+dt/(SPC?20:90));
-if(Q&&!p.wq&&p.kc<=0)skill();
+if(Q&&!p.wq&&p.kc<=0&&!(SPC&&p.s3>=0))skill();
 if(U&&!p.we&&p.uc>=1&&p.ut<=0)ult();
 if(V&&!p.gp&&p.gc<=0&&p.go<=0)gw();
 if(SPC&&Mk&&!p.wm)spSk3();
@@ -240,7 +241,7 @@ if(S&&!p.ws){
 p.sf=1;ring(p.x+p.f*18,p.y-30,'150,195,225',30);
 for(let i=0;i<7;i++){const a=rnd(-1,1);sp(3,p.x+p.f*30,p.y-30+a*14,p.f*rnd(40,140),a*90,rnd(.25,.45),1.6,'165,205,230',200,2)}
 }
-if(SPC){p.dr=0;p.ch=0;if(F&&!p.sF&&!S&&p.cd<=0&&p.at<0&&p.sk1<0)spAtk();p.sF=F}
+if(SPC){p.dr=0;p.ch=0;if(F&&!p.sF&&!S&&p.cd<=0&&p.at<0&&p.sk1<0&&p.s3<0)spAtk();p.sF=F}
 else if(S){p.dr=0;p.ch=0}
 else if(F){
 if(!p.dr&&p.cd<=0){p.dr=1;p.ch=0}
@@ -253,7 +254,7 @@ if(p.ch>.2&&M.random()<p.ch*.5){const a=rnd(0,TAU),r=rnd(18,30);sp(1,nx+M.cos(a)
 if(p.pc<1&&p.ch>=1)ring(nx,ny,AE[evl()].c,24);
 p.pc=p.ch;
 }
-if(dir&&!p.dr&&!p.go&&!(SPC&&p.sk1>=0))p.f=dir;
+if(dir&&!p.dr&&!p.go&&!(SPC&&p.sk1>=0))p.f=dir>0?1:-1;
 p.wd+=(-p.f-p.wd)*M.min(1,dt*1.5);
 p.sh+=((S?1:0)-p.sh)*M.min(1,dt*13);
 const spd=320*(p.dr?.42:1)*(SPC&&(p.at>=0||p.sk1>=0||p.s3>=0)?.4:1)*(1-p.sh*.45)*(p.go?.15:1)*(1+.06*xzB.v)*(p.fy?1+.08*sv.wl:1);
@@ -270,7 +271,7 @@ for(let i=0;i<6;i++)sp(5,p.x+rnd(-14,14),p.y-rnd(20,50),rnd(-30,30),rnd(-60,-10)
 }
 if(!p.on){
 if(p.fy){
-p.vy+=((J?-240:60)-p.vy)*M.min(1,dt*6);p.y+=p.vy*dt;
+p.vy+=((J?-240:(TT.vy||0)<0?(TT.vy||0)*240:60+(TT.vy||0)*180)-p.vy)*M.min(1,dt*6);p.y+=p.vy*dt;
 if(p.y<GY-300-sv.wl*30){p.y=GY-300-sv.wl*30;if(p.vy<0)p.vy=0}
 }else{
 let gr=1700;

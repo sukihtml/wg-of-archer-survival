@@ -9,6 +9,52 @@ coinImg.src='data:image/svg+xml,'+encodeURIComponent('<svg xmlns="http://www.w3.
 const coinTag='<svg class="ci" viewBox="0 0 24 24"><use href="#coin"/></svg>';
 const GIM=[[],[]];
 const gearImg=(i,t)=>GIM[i][t]||(GIM[i][t]=GRC[i][t].toDataURL());
+const CHI=[],WGI=[],SQI=[];
+let SPI=null;
+function chRender(fn){
+const o=document.createElement('canvas');o.width=o.height=160;
+const x=o.getContext('2d'),og=g,sv0=[p.x,p.y,p.f,p.vt,p.wa,p.wp,p.sq,p.air,p.vx,p.vy],ws=sv.ws;
+x.setTransform(1.6,0,0,1.6,0,0);
+g=x;
+try{fn()}catch(e){}
+g=og;
+[p.x,p.y,p.f,p.vt,p.wa,p.wp,p.sq,p.air,p.vx,p.vy]=sv0;sv.ws=ws;
+return o.toDataURL();
+}
+function chImg(i){
+return CHI[i]||(CHI[i]=chRender(()=>{
+sv.ws=0;p.x=50;p.y=90;p.f=1;p.vt=i;p.wa=.3;p.wp=1.2;p.sq=0;p.air=0;p.vx=0;p.vy=0;
+drawP(0);drawP(1);
+}));
+}
+function sqImg(i){
+return SQI[i]||(SQI[i]=chRender(()=>{
+drawS({id:i,c:SC[i],x:50,y:92,f:1,vx:0,ph:0,sw:0,hf:0,dead:0,aa:0,hp:1,mh:1});
+}));
+}
+function spImg(){
+return SPI||(SPI=chRender(()=>{
+const s0=SPC,pb=Object.assign({},p),ob={},a0=dxS.act;
+for(const k in dxS.O)ob[k]=Object.assign({},dxS.O[k]);
+SPC=1;dxS.act='T';
+try{
+spUpd(.016);spUpd(.016);
+p.x=68;p.y=92;p.f=1;
+dxS.O.B.x=34;dxS.O.B.y=92;dxS.O.B.f=1;
+dxB.Draw();dxT.Draw();
+}finally{
+SPC=s0;dxS.act=a0;Object.assign(p,pb);
+for(const k in ob)Object.assign(dxS.O[k],ob[k]);
+}
+}));
+}
+function wnImg(k){
+return WGI[k]||(WGI[k]=chRender(()=>{
+p.f=1;p.wa=1;p.wp=1.3;
+g.translate(68,84);
+if(k==1)evWn(p.wa,p.wp);else ev5W();
+}));
+}
 const PFK='pemanah_profil_v1';
 const pf={nm:'Pemain',av:0,bn:0,cl:[],ok:0};
 try{const o=JSON.parse(localStorage.getItem(PFK)||'null');if(o){if(typeof o.nm=='string')pf.nm=o.nm.slice(0,14);pf.av=M.max(0,M.min(2,o.av|0));pf.bn=M.max(0,M.min(2,o.bn|0));if(Array.isArray(o.cl))pf.cl=o.cl.filter(v=>v>=0&&v<4);if(o.ok||(pf.nm.trim()&&pf.nm!='Pemain'))pf.ok=1}}catch(x){}
@@ -179,7 +225,7 @@ let h='';
 for(const s of WND){
 const ow=sv.wg.includes(s.k),on=sv.ws==s.k;
 const b=!ow?'<div class="bt'+(sv.coins>=s.c?'':' no')+'">'+coinTag+s.c+'</div>':on?'<div class="bt">Lepas</div>':'<div class="bt">Pakai</div>';
-h+='<div class="cd wn'+(on?' on':'')+'" data-y="'+s.k+'"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:'+s.o+'"><path d="'+s.p+'"/></svg></div><b>'+s.n+'</b><small>'+s.d+'</small>'+b+'</div>';
+h+='<div class="cd wn'+(on?' on':'')+'" data-y="'+s.k+'"><div class="ic ch"><img src="'+wnImg(s.k)+'"></div><b>'+s.n+'</b><small>'+s.d+'</small>'+b+'</div>';
 }
 if(sv.wg.length||sv.own.includes(4)||sv.own.includes(5)){
 const l=sv.wl;
@@ -220,7 +266,7 @@ const ow=sv.sq.includes(i),l=sv.sl[i];
 let b,d;
 if(!ow){d='Rekan bertarung';b='<div class="bt'+(sv.coins>=SQP[i]?'':' no')+'">'+coinTag+SQP[i]+'</div>'}
 else{d='+'+l*15+'% HP dan damage'+(l<5?' \u2192 +'+(l+1)*15+'%':'');b=lvPips(l)+'<small>Lv '+l+'/5</small>'+(l>=5?'<div class="bt ds">Maks</div>':'<div class="bt'+(sv.coins>=SQU[l]?'':' no')+'">'+coinTag+SQU[l]+'</div>')}
-h+='<div class="cd sq" data-z="'+i+'"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:#9fd6c2"><path d="M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg></div><b>'+SC[i].n+'</b><small>'+d+'</small>'+b+'</div>';
+h+='<div class="cd sq" data-z="'+i+'"><div class="ic ch"><img src="'+sqImg(i)+'"></div><b>'+SC[i].n+'</b><small>'+d+'</small>'+b+'</div>';
 }
 return h;
 }
@@ -260,7 +306,7 @@ h+='<div class="pq" style="'+G+'">Squad  -  '+sv.eq.length+'/2 dibawa</div>';
 if(!sv.sq.length)h+='<div class="pq" style="'+G+'">Belum punya squad, beli di Toko</div>';
 for(const i of sv.sq){
 const on=sv.eq.includes(i);
-h+='<div class="cd'+(on?' on':'')+'" data-eq="'+i+'"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:#9fd6c2"><path d="M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM5 20c0-4 3-6.5 7-6.5s7 2.5 7 6.5"/></svg></div><b>'+SC[i].n+'</b><small>Lv '+sv.sl[i]+'/5</small><div class="bt'+(on?' ds':sv.eq.length>=2?' no':'')+'">'+(on?'Lepas':'Pakai')+'</div></div>';
+h+='<div class="cd'+(on?' on':'')+'" data-eq="'+i+'"><div class="ic ch"><img src="'+sqImg(i)+'"></div><b>'+SC[i].n+'</b><small>Lv '+sv.sl[i]+'/5</small><div class="bt'+(on?' ds':sv.eq.length>=2?' no':'')+'">'+(on?'Lepas':'Pakai')+'</div></div>';
 }
 }
 plEl.className='';
@@ -477,7 +523,7 @@ let b;
 if(k)b=i==sv.sel&&!SPC?'<div class="bt ds">Dipilih</div>':'<div class="bt">Pilih</div>';
 else if(ow)b='<div class="bt ds">Dimiliki</div>';
 else b='<div class="bt'+(sv.coins>=CP[i]?'':' no')+'">'+coinTag+CP[i]+'</div>';
-a.push('<div class="cd'+((k?i==sv.sel&&!SPC:i==mPrev)?' on':'')+'" data-i="'+i+'"><div class="ic"><svg viewBox="0 0 24 24" style="stroke:rgb('+AE[i].c+')"><path d="M3 12h16M14 7l5 5-5 5M3 12l3-3M3 12l3 3"/></svg>'+(i?'<img src="'+gearImg(0,i)+'"><img src="'+gearImg(1,i)+'">':'')+'</div><b>'+AE[i].n+'</b><small>HP x'+GRM[i]+'  Damage x'+GRM[i]+'</small>'+b+'</div>');
+a.push('<div class="cd'+((k?i==sv.sel&&!SPC:i==mPrev)?' on':'')+'" data-i="'+i+'"><div class="ic ch"><img src="'+chImg(i)+'"></div><b>'+AE[i].n+'</b><small>HP x'+GRM[i]+'  Damage x'+GRM[i]+'</small>'+b+'</div>');
 }
 if(k)a.push(spCard());
 if(!k&&shT=='s')a.push(skHtml());
