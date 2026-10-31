@@ -832,7 +832,7 @@ function spSet(v){SPC=v;try{localStorage.setItem('wg_spc',v)}catch(x){}spIcons()
 const hasSk=k=>duOn?0:SPC?(k=='q'||k=='u'||k=='m'||k=='x'):sv.ek.includes(k);
 function spCard(){
 const on=SPC;
-return '<div class="cd'+(on?' on':'')+'" data-i="6"><div class="ic ch"><img src="'+spImg()+'"></div><b>Pasukan Duo</b><small>Bazoka + Tombak  tukar, bot &amp; ultimate combo</small><div class="bt'+(on?' ds':'')+'">'+(on?'Dipilih':'Pilih')+'</div></div>';
+return '<div class="cd'+(on?' on':'')+'" data-i="6"><div class="ic ch"><img src="'+spImg()+'"></div><b>Lassy × Kitty</b><small>Bazoka + Tombak  tukar, bot &amp; ultimate combo</small><div class="bt'+(on?' ds':'')+'">'+(on?'Dipilih':'Pilih')+'</div></div>';
 }
 function swap(){
 if(!SPC||inMenu||p.dead||cmb.on)return;

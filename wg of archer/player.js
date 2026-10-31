@@ -2,12 +2,12 @@ const p={x:0,y:0,vx:0,vy:0,f:1,cv:0,on:1,wk:0,st:0,ch:0,pc:0,dr:0,da:0,sh:0,sf:0
 p.y=GY;cam=-VW*.5;
 
 const AE=[
-{n:'wangsaf gaming yt',d:1,k:'a',c:'255,205,130',t:'255,200,120',s:'236,200,140',h:'#d9dfe8',f:'#8fb3a8',g:'#b9d1c8',pr:0},
-{n:'@cwuhuy',d:1.35,k:'c',c:'150,195,225',t:'170,210,240',s:'190,220,245',h:'#eef4fb',f:'#9fc3e0',g:'#cfe4f5',pr:0},
-{n:'ell sebelum before',d:1.8,k:'f',c:'255,140,80',t:'255,130,70',s:'255,180,110',h:'#ffb26b',f:'#e8683a',g:'#ffc090',pr:1},
-{n:'ell sesudah after',d:2.4,k:'e',c:'190,170,245',t:'190,170,250',s:'220,205,255',h:'#e6dcff',f:'#a58de0',g:'#d8cdfa',pr:1},
-{n:'sukixwg',d:3.2,k:'p',c:'255,236,170',t:'255,236,170',s:'255,246,205',h:'#fff6d2',f:'#f0cf7a',g:'#fff2c0',pr:2},
-{n:'wg of suki',d:4.4,k:'s',c:'170,215,255',t:'170,215,255',s:'205,230,255',h:'#f2f8ff',f:'#7fb4ee',g:'#cfe6ff',pr:3}
+{n:'shadowsuk',d:1,k:'a',c:'255,205,130',t:'255,200,120',s:'236,200,140',h:'#d9dfe8',f:'#8fb3a8',g:'#b9d1c8',pr:0},
+{n:'shadowblue',d:1.35,k:'c',c:'150,195,225',t:'170,210,240',s:'190,220,245',h:'#eef4fb',f:'#9fc3e0',g:'#cfe4f5',pr:0},
+{n:'shadowfire',d:1.8,k:'f',c:'255,140,80',t:'255,130,70',s:'255,180,110',h:'#ffb26b',f:'#e8683a',g:'#ffc090',pr:1},
+{n:'N of archer',d:2.4,k:'e',c:'190,170,245',t:'190,170,250',s:'220,205,255',h:'#e6dcff',f:'#a58de0',g:'#d8cdfa',pr:1},
+{n:'Golden Arrow',d:3.2,k:'p',c:'255,236,170',t:'255,236,170',s:'255,246,205',h:'#fff6d2',f:'#f0cf7a',g:'#fff2c0',pr:2},
+{n:'The Arrow of the Gods',d:4.4,k:'s',c:'170,215,255',t:'170,215,255',s:'205,230,255',h:'#f2f8ff',f:'#7fb4ee',g:'#cfe6ff',pr:3}
 ];
 const SKC=6,UD=2.8,GCD=80,GCH=.8,GFR=1.4;
 const evl=()=>p.vt;
