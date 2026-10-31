@@ -443,7 +443,7 @@ addEventListener('blur',()=>{if(waP==1)waP=2});
 addEventListener('focus',stWa);
 addEventListener('pageshow',stWa);
 const BK='pemanah_bonus_v1';
-const BL=[{k:'c',c:50,t:'Follow Saluran',u:'https://whatsapp.com/channel/0029Vb6t3YqIXnluSByJvh1g',d:'Follow saluran WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'y',c:70,t:'Buka YouTube',u:'https://youtu.be/xq3DUQa4JTs?si=rEoFRHZmSkbQRKQI',d:'Like dan subscribe di YouTube, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'u',c:30,t:'Follow Woas Update',u:'https://whatsapp.com/channel/0029VbE0SuKGZNCyxMgAf702',d:'Follow saluran WhatsApp Woas Update, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'}];
+const BL=[{k:'c',c:50,t:'Follow Saluran',u:'https://whatsapp.com/channel/0029Vb6t3YqIXnluSByJvh1g',d:'Follow saluran WhatsApp, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'y',c:70,t:'Buka YouTube',u:'https://youtu.be/xq3DUQa4JTs?si=rEoFRHZmSkbQRKQI',d:'Like dan subscribe di YouTube, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'u',c:30,t:'Follow Woas Update',u:'https://whatsapp.com/channel/0029VbE0SuKGZNCyxMgAf702',d:'Follow saluran WhatsApp Woas Update, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'},{k:'s',c:800,t:'Subscribe & Like',u:'https://youtube.com/shorts/3otIGVRIYLo?si=W5_hO7T8UjO6fnxT',d:'Subscribe dan like di YouTube, lalu kembali ke game untuk mendapat bonus. Hanya bisa diklaim sekali.'}];
 const bnD={};
 try{const o=JSON.parse(localStorage.getItem(BK)||'null');if(o)for(const q of BL)if(o[q.k])bnD[q.k]=1}catch(x){}
 let bnK='',bnP=0;
@@ -480,7 +480,7 @@ plEl.innerHTML='<div class="ms"><b>Bonus 100 koin</b><span>Bagikan link game ke 
 cnEl.textContent=sv.coins;
 }
 const RDK='pemanah_redeem_v1';
-const RDL=[{k:'a',n:'VIP777',c:400},{k:'b',n:'VIP888',c:700},{k:'c',n:'WOASXWG',c:200},{k:'d',n:'X25CDX89IVHJK1M',c:9999999999},{k:'e',n:'WGXRPVIPPP',c:0,r:7512},{k:'f',n:'WGXGELOMBANGVIPPP',c:0,w:3211}];
+const RDL=[{k:'a',n:'VIP777',c:400},{k:'b',n:'VIP888',c:700},{k:'c',n:'WOASXWG',c:200},{k:'d',n:'X25CDX89IVHJK1M',c:9999999999},{k:'e',n:'WGXRPVIPPP',c:0,r:7512},{k:'f',n:'WGXGELOMBANGVIPPP',c:0,w:3211},{k:'g',n:'WOASXWG1',c:500}];
 const rdD={};
 try{const o=JSON.parse(localStorage.getItem(RDK)||'null');if(o)for(const q of RDL)if(o[q.k])rdD[q.k]=1}catch(x){}
 function rdSave(){try{localStorage.setItem(RDK,JSON.stringify(rdD))}catch(x){}}
