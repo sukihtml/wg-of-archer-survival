@@ -3,11 +3,10 @@ const cv=document.getElementById('c');let g=cv.getContext('2d');
 const PI=Math.PI,TAU=PI*2,M=Math;
 let W,H,sc,VW,VH,GY,dd,T=0,DT=.016,cam=0,shake=0,gBg,gFg,gGr;
 const STK='pemanah_set_v1',STM={gq:2,fp:2,fl:5,wa:1,bg:2},ST={gq:2,fp:2,fl:0,wa:0,bg:0},GQC=[.75,1.2,1.6],FPI=[29.5,13.5,0];
-let LQ=0;
-try{const o=JSON.parse(localStorage.getItem(STK)||'null');if(o){for(const k in STM)if(o[k]!=null)ST[k]=M.max(0,M.min(STM[k],o[k]|0))}else if(matchMedia('(pointer:coarse)').matches&&((navigator.deviceMemory||4)<=4||(navigator.hardwareConcurrency||8)<=4)){ST.gq=0;ST.fp=0}}catch(x){}
+try{const o=JSON.parse(localStorage.getItem(STK)||'null');if(o)for(const k in STM)if(o[k]!=null)ST[k]=M.max(0,M.min(STM[k],o[k]|0))}catch(x){}
 function rs(){
 const oG=GY;
-dd=M.min(devicePixelRatio||1,GQC[ST.gq]);LQ=ST.gq==0?1:0;W=innerWidth;H=innerHeight;
+dd=M.min(devicePixelRatio||1,GQC[ST.gq]);W=innerWidth;H=innerHeight;
 cv.width=W*dd;cv.height=H*dd;
 sc=M.max(.55,M.min(1.5,H/520,W/600));
 VW=W/sc;VH=H/sc;GY=M.round(VH*.8);
