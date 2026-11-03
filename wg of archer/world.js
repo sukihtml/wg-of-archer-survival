@@ -111,7 +111,7 @@ g.globalAlpha=1;
 }
 function mtns(){
 MT.forEach((K,ki)=>{
-const S=WS.m[ki],B=GY*K.b,sh=cam*K.f,i0=M.floor(sh/K.st)-4,i1=M.ceil((sh+VW)/K.st)+4,pk=[],ys=[],ST=6,OF=260,n=M.ceil((VW+OF*2)/ST)+1,sb=M.floor(sh/ST)*ST,fr=sh-sb;
+const S=WS.m[ki],B=GY*K.b,sh=cam*K.f,i0=M.floor(sh/K.st)-4,i1=M.ceil((sh+VW)/K.st)+4,pk=[],ys=[],ST=6*(1+LQ),OF=260,n=M.ceil((VW+OF*2)/ST)+1,sb=M.floor(sh/ST)*ST,fr=sh-sb;
 const vn=q=>{const i=M.floor(q),f=q-i;return hs(i)+(hs(i+1)-hs(i))*f*f*(3-2*f)};
 for(let i=i0;i<=i1;i++)pk.push({i,x:i*K.st+hs(i+K.s)*K.st*.5,h:GY*(K.h0+hs(i+K.s+7)*K.hv),w:K.st*(.72+hs(i+K.s+9)*.3),e:1.3+hs(i+K.s+11)*.35});
 for(let j=0;j<n;j++){

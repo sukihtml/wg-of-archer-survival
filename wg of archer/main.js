@@ -1,7 +1,13 @@
+let afT=0,afN=0,afW=120;
 function frame(now){
 requestAnimationFrame(frame);
 if(now-lfr<FPI[ST.fp])return;
+const fd=now-lfr;
 lfr=now;
+if(fd<250&&!paused&&document.visibilityState=='visible'){
+if(afW>0)afW--;
+else{afT+=fd;afN++;if(afN>=90){if(afT/afN>40&&ST.gq>0){ST.gq--;stSave();rs();afW=120}afT=0;afN=0}}
+}else{afT=0;afN=0}
 try{step(now)}catch(x){slRs();console.error(x);cv.width=cv.width}
 }
 function step(now){
