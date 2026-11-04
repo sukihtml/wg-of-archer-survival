@@ -1,4 +1,4 @@
-const CACHE = "wg-archer-v4";
+const CACHE = "wg-archer-v5";
 
 const ASSETS = [
   "./",
@@ -6,6 +6,7 @@ const ASSETS = [
   "manifest.json",
   "wg of archer/style.css",
   "wg of archer/core.js",
+  "wg of archer/archer-light.js",
   "wg of archer/input.js",
   "wg of archer/particles.js",
   "wg of archer/player.js",
@@ -19,11 +20,14 @@ const ASSETS = [
   "wg of archer/squad-render.js",
   "wg of archer/enemies-render.js",
   "wg of archer/hud.js",
+  "wg of archer/duel.js",
+  "wg of archer/pvp.js",
   "wg of archer/combo.js",
   "wg of archer/world.js",
   "wg of archer/menu.js",
   "wg of archer/audio.js",
-  "wg of archer/main.js"
+  "wg of archer/main.js",
+  "wg of archer/online.js"
 ];
 
 self.addEventListener("install", function (e) {
