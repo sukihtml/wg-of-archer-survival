@@ -35,12 +35,6 @@
 #ldg .ldb{width:min(260px,70vw);height:8px;border-radius:8px;background:rgba(255,255,255,.15);overflow:hidden}
 #ldg .ldb i{display:block;width:0;height:100%;background:#f3b63f;border-radius:8px}
 #ldg span{font-size:14px;font-weight:600;opacity:.8}
-#wgm{position:fixed;left:0;top:0;right:0;bottom:0;z-index:100002;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.6);box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
-#wgm .wgc{width:100%;max-width:380px;box-sizing:border-box;padding:24px 20px 20px;border-radius:28px;background:#e2e2e2;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.45)}
-#wgm p{margin:0 0 10px;font-size:15px;font-weight:700;line-height:1.4;color:#2b2d31}
-#wgm .wgb{display:block;box-sizing:border-box;width:100%;margin:0 0 18px;padding:15px 12px;border-radius:14px;background:linear-gradient(135deg,#7a7e84,#575a60);color:#fff;font-size:14px;font-weight:800;text-align:center;text-decoration:none;cursor:pointer;box-shadow:0 6px 14px rgba(0,0,0,.28);-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;word-break:break-all}
-#wgm .wgb:active{transform:scale(.97)}
-#wgm .wgx{margin:0;background:linear-gradient(135deg,#b33a4a,#8c2433);text-transform:uppercase;letter-spacing:.6px}
 html.fsd #fs{display:none}
 @media (display-mode:fullscreen),(display-mode:standalone){#fs{display:none}}
 </style>
@@ -83,11 +77,10 @@ html.fsd #fs{display:none}
 <div id="of"><svg viewBox="0 0 64 64"><path d="M19 47h27a11 11 0 0 0 1.6-21.9A15 15 0 0 0 18.4 28 9.6 9.6 0 0 0 19 47z" fill="#dfe6f5" stroke="#8f9bc4" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 10l44 44" stroke="#0c1220" stroke-width="8" stroke-linecap="round"/><path d="M10 10l44 44" stroke="#e0405a" stroke-width="4" stroke-linecap="round"/></svg><b>Gagal terhubung ke server</b><div id="oft">Main Mode Latihan (Offline)</div></div>
 <div id="apkm"><div class="apkc"><b class="apkt">Tetap main di browser atau download APK?</b><div class="apkb" id="apkb1">Tetap di browser</div><a class="apkb" id="apkb2" href="https://www.mediafire.com/file/oncv6b55oniqapy/A.+WOAS_1.apk/file" target="_blank" rel="noopener">Download</a><label class="apkl"><input type="checkbox" id="apkcb"><span>Jangan tampilkan lagi hari ini</span></label></div></div>
 <div id="lsm"><svg viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><b>Putar HP ke mode lanskap</b><span>Game ini hanya bisa dimainkan secara lanskap.</span></div>
-<div id="wgm"><div class="wgc"><p>Ingin bermain woas yang lancar di hp kentang dan bisa mabar? Klik link dibawah</p><a class="wgb" href="https://woas-old.edgeone.dev" target="_blank" rel="noopener">https://woas-old.edgeone.dev</a><p>Ingin bermain tic tac toe pro bisa mabar? Klik link dibawah</p><a class="wgb" href="https://tttpro.edgeone.dev" target="_blank" rel="noopener">https://tttpro.edgeone.dev</a><div class="wgb wgx" id="wgcx">Cancel</div></div></div>
 <div id="ldg"><b>Memuat game</b><div class="ldb"><i></i></div><span>0%</span></div>
 <script>
 function wgGo(){
-var L=['wg of archer/core.js','wg of archer/archer-light.js','wg of archer/input.js','wg of archer/particles.js','wg of archer/player.js','wg of archer/projectiles.js','wg of archer/character.js','wg of archer/spear.js','wg of archer/game-state.js','wg of archer/fitur.js','wg of archer/enemies.js','wg of archer/squad.js','wg of archer/squad-render.js','wg of archer/enemies-render.js','wg of archer/hud.js','wg of archer/duel.js','wg of archer/pvp.js','wg of archer/combo.js','wg of archer/world.js','wg of archer/menu.js','wg of archer/audio.js','wg of archer/main.js','wg of archer/online.js'];
+var L=['wg of archer/gl2d.js','wg of archer/core.js','wg of archer/archer-light.js','wg of archer/input.js','wg of archer/particles.js','wg of archer/player.js','wg of archer/projectiles.js','wg of archer/character.js','wg of archer/spear.js','wg of archer/game-state.js','wg of archer/fitur.js','wg of archer/enemies.js','wg of archer/squad.js','wg of archer/squad-render.js','wg of archer/enemies-render.js','wg of archer/hud.js','wg of archer/duel.js','wg of archer/pvp.js','wg of archer/combo.js','wg of archer/world.js','wg of archer/menu.js','wg of archer/audio.js','wg of archer/main.js','wg of archer/online.js'];
 var bar=document.querySelector('#ldg .ldb i'),tx=document.querySelector('#ldg span'),ld=document.getElementById('ldg');
 var pr=L.map(function(){return 0}),tt=[];
 function show(){
@@ -115,10 +108,7 @@ bar.style.width='100%';tx.textContent='100%';
 requestAnimationFrame(function(){ld.style.display='none'});
 });
 }
-document.getElementById('wgcx').addEventListener('click',function(){
-document.getElementById('wgm').style.display='none';
 wgGo();
-});
 </script>
 <script>
 (function(){
