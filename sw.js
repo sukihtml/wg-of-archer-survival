@@ -1,10 +1,11 @@
-const CACHE = "wg-archer-v6";
+const CACHE = "wg-archer-v7";
 
 const ASSETS = [
   "./",
   "index.html",
   "manifest.json",
   "wg of archer/style.css",
+  "wg of archer/gl2d.js",
   "wg of archer/core.js",
   "wg of archer/archer-light.js",
   "wg of archer/input.js",
@@ -33,47 +34,9 @@ const ASSETS = [
 self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open(CACHE).then(function (c) {
-      return c.addAll(ASSETS);
+      return Promise.all(ASSETS.map(function (u) {
+        return c.add(new Request(u, { cache: "reload" })).catch(function () {});
+      }));
     }).then(function () {
       return self.skipWaiting();
     })
-  );
-});
-
-self.addEventListener("activate", function (e) {
-  e.waitUntil(
-    caches.keys().then(function (keys) {
-      return Promise.all(
-        keys.filter(function (k) {
-          return k !== CACHE;
-        }).map(function (k) {
-          return caches.delete(k);
-        })
-      );
-    }).then(function () {
-      return self.clients.claim();
-    })
-  );
-});
-
-self.addEventListener("fetch", function (e) {
-  const req = e.request;
-  if (req.method !== "GET") return;
-  const url = new URL(req.url);
-  if (url.origin !== self.location.origin) return;
-  e.respondWith(
-    fetch(req).then(function (res) {
-      if (res && res.ok) {
-        const copy = res.clone();
-        caches.open(CACHE).then(function (c) {
-          c.put(req, copy);
-        });
-      }
-      return res;
-    }).catch(function () {
-      return caches.match(req).then(function (r) {
-        return r || caches.match("index.html");
-      });
-    })
-  );
-});
