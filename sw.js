@@ -1,4 +1,4 @@
-const CACHE = "wg-archer-v5";
+const CACHE = "wg-archer-v6";
 
 const ASSETS = [
   "./",
